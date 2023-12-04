@@ -13,7 +13,7 @@
                 </article> -->
             </section>
             <div class="web_credit">
-                <p>All rights reserved &copy; WebDesCode</p>
+            <p> <a class="footer_credit" href="<?php echo esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a> All Rights Reserved &copy; <?php echo date('Y'); ?></p>
                 <div class="social_media">
                 <?php get_template_part('social_bar');?>
                 </div>

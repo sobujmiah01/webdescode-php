@@ -132,6 +132,22 @@ function pagination($pages = '', $range = 4){
         echo '</ul></div>';
     }
 }
+/* Custom Post Type Code Here */
+function create_custom_post_type() {
+    register_post_type('services',
+        array(
+            'labels' => array(
+                'name' => __('Services'),
+                'singular_name' => __('Service'),
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
+            'taxonomies' => array('category'), // Add support for categories
+        )
+    );
+}
+add_action('init', 'create_custom_post_type');
 
 
 
