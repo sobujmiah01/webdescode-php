@@ -36,7 +36,6 @@ function webdescode_customize_register($wp_customize) {
         'title' => __('Social Media', 'webdescode'),
         'priority' => 30,
     ));
-
     // Add Social Media Fields
     $social_icons = array(
         'facebook' => 'Facebook',
@@ -59,6 +58,48 @@ function webdescode_customize_register($wp_customize) {
             'type' => 'url',
         ));
     }
+// Add Website Slogan Section
+$wp_customize->add_section('webdescode_slogan_section', array(
+    'title' => __('Website Slogan', 'webdescode'),
+    'priority' => 40,
+));
+
+// Add Background Image Setting
+$wp_customize->add_setting('website_slogan_background', array(
+    'default' => '',
+    'sanitize_callback' => 'esc_url_raw',
+));
+
+$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'website_slogan_background', array(
+    'label' => __('Background Image', 'webdescode'),
+    'section' => 'webdescode_slogan_section',
+    'settings' => 'website_slogan_background',
+)));
+
+// Add Background Color Setting
+$wp_customize->add_setting('website_slogan_background_color', array(
+    'default' => '',
+    'sanitize_callback' => 'sanitize_hex_color',
+));
+
+$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'website_slogan_background_color', array(
+    'label' => __('Background Color', 'webdescode'),
+    'section' => 'webdescode_slogan_section',
+    'settings' => 'website_slogan_background_color',
+)));
+
+// Add Slogan Text Setting
+$wp_customize->add_setting('website_slogan_text', array(
+    'default' => '',
+    'sanitize_callback' => 'sanitize_text_field',
+));
+
+$wp_customize->add_control('website_slogan_text', array(
+    'label' => __('Slogan Text', 'webdescode'),
+    'section' => 'webdescode_slogan_section',
+    'type' => 'text',
+));
+    
 }
 add_action('customize_register', 'webdescode_customize_register');
 // Replaces the excerpt "Read More" text by a link
@@ -96,7 +137,6 @@ function ourWidgetInit(){
         'before_title' => '<h2 class="wid_heading">',
         'after_title' => '</h2>',
     ));
-    
 }
 add_action('widgets_init' , 'ourWidgetInit');
 function pagination($pages = '', $range = 4){
@@ -132,7 +172,6 @@ function pagination($pages = '', $range = 4){
         echo '</ul></div>';
     }
 }
-/* Custom Post Type Code Here */
 function create_custom_post_type() {
     register_post_type('services',
         array(
@@ -143,14 +182,8 @@ function create_custom_post_type() {
             'public' => true,
             'has_archive' => true,
             'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
-            'taxonomies' => array('category'), // Add support for categories
+            'taxonomies' => array('category', 'post_tag'), // Add support for categories and tags
         )
     );
 }
 add_action('init', 'create_custom_post_type');
-
-
-
-
-
-

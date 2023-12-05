@@ -1,24 +1,28 @@
-<?php get_header(); ?>
+<?php
+get_header();
+?>
+
 <main class="main_article_post">
     <article class="web_post_wrapper">
         <div class="web_post_inner">
             <?php
-            // Check if a category is selected
             $current_category = get_queried_object();
-            if ($current_category && isset($current_category->term_id)) {
-                $args = array(
-                    'post_type' => 'services',
-                    'posts_per_page' => -1, // Show all services for the selected category
-                    'cat' => $current_category->term_id // Filter by the selected category ID
-                );
-            } else {
-                $args = array(
-                    'post_type' => 'services',
-                    'posts_per_page' => -1, // Show all services if no category is selected
-                );
-            }
+
+            $args = array(
+                'post_type' => 'services',
+                'posts_per_page' => -1,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'category', // Ensure you are using the correct taxonomy
+                        'field' => 'term_id',
+                        'terms' => $current_category->term_id, // Use the current category ID
+                        'include_children' => true, // Include posts from child categories
+                    ),
+                ),
+            );
 
             $services_query = new WP_Query($args);
+
             if ($services_query->have_posts()) :
                 while ($services_query->have_posts()) : $services_query->the_post(); ?>
                     <div class="post_wrapper">
@@ -47,4 +51,5 @@
     </article>
     <?php get_sidebar(); ?>
 </main>
+
 <?php get_footer(); ?>
