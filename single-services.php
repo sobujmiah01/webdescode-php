@@ -1,8 +1,4 @@
-<?php 
-/*
-Template Name: service single 
-*/
-get_header();?>
+<?php get_header();?>
     <main class="main_article_post">
         <article class="web_post_wrapper">
             <div class="web_post_inner">
@@ -12,6 +8,7 @@ get_header();?>
                         <div class="post_wrapper">
                             <article>
                                 <h1><?php the_title();?></h1>
+                                <?php get_template_part('post_meta');?>
                                 <?php the_content();?>
                             </article>
                         </div>

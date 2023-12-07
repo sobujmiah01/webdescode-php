@@ -1,15 +1,17 @@
-<?php 
-/*
-Template Name: Archives
-*/
-get_header();?>
-    <section class="web_slogan_wrapper">
-        <article class="web_slogan">
-            <h2>Website</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente quaerat nemo, quam quos facere
-                aperiam doloremque placeat consectetur provident!</p>
-        </article>
-    </section>
+<?php
+if (have_posts()) {
+    if (get_post_type() == 'services') {
+        get_template_part('archive-services');
+    } else {
+        get_template_part('archive-blog');
+    }
+}
+?>
+
+
+
+<?php get_header();?>
+    <?php get_template_part('web_slogan');?>
     <main class="main_article_post">
         <article class="web_post_wrapper">
             <div class="web_post_inner">
@@ -20,12 +22,9 @@ get_header();?>
                             <figure>
                                 <a href="<?php the_permalink();?>"><?php the_post_thumbnail( 'thumbnail');?></a>
                             </figure>
-                            <div class="post_meta">
-                                <span class="post_by">Time: <?php the_time()?></span>
-                                <span class="post_time">Date: <?php the_time('d M Y')?></span>
-                            </div>
                             <article>
                                 <h2><a href="<?php the_permalink();?>"><?php the_title();?></a></h2>
+                                <?php get_template_part('post_meta');?>
                                 <?php the_excerpt();?>
                             </article>
                         </div>

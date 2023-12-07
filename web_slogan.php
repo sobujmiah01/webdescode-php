@@ -8,7 +8,7 @@
         <?php if ($background_color) echo 'background-color: ' . esc_attr($background_color); ?>
     ">
         <div class="slogan_article">
-            <h2><?php echo get_theme_mod('website_slogan_text'); ?></h2>
+            <p><?php echo get_theme_mod('website_slogan_text'); ?></p>
             <p><?php bloginfo('name'); ?> - <?php bloginfo('description'); ?></p>
         </div>
     </div>

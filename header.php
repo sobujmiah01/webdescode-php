@@ -34,7 +34,7 @@
             <!-- Main Header Section -->
             <div class="menu_wrapper">
                 <div class="logo_menu_wrapper">
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                    <a class="web_logoL" href="<?php echo esc_url( home_url( '/' ) ); ?>">
                         <?php 
                         $custom_logo_id = get_theme_mod( 'custom_logo' ); 
                         $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );

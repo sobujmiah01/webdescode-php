@@ -1,5 +1,8 @@
-<?php get_header();?>
-    <?php get_template_part('web_slogan');?>
+<?php 
+/*
+Template Name: Full Template
+*/
+get_header();?>
     <main class="main_article_post">
         <article class="web_post_wrapper">
             <div class="web_post_inner">
@@ -18,6 +21,5 @@
                 ?>
             </div>
         </article>
-        <?php get_sidebar();?>
     </main>
 <?php get_footer();?>
