@@ -22,7 +22,6 @@ get_header();
             );
 
             $services_query = new WP_Query($args);
-
             if ($services_query->have_posts()) :
                 while ($services_query->have_posts()) : $services_query->the_post(); ?>
                     <div class="post_wrapper">

@@ -1,6 +1,7 @@
 <?php 
 function enqueue_theme_styles_scripts() {
     // Enqueue main stylesheet
+    wp_enqueue_style('stylesheet', get_template_directory_uri());
     wp_enqueue_style('main-style', get_template_directory_uri() . '/assis/main.css', null, true);
     // Enqueue Font Awesome
     wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');

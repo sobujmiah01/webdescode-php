@@ -1,4 +1,9 @@
-<?php get_header();?>
+<?php 
+/*
+Template Name: Full TmpSlogan
+*/
+get_header();?>
+<?php get_template_part('web_slogan');?>
     <main class="main_article_post">
         <article class="web_post_wrapper">
             <div class="web_post_inner">
@@ -7,12 +12,7 @@
                         while(have_posts()): the_post();?>
                         <div class="post_wrapper">
                             <article>
-                                <h1><?php the_title();?></h1>
-                                <?php get_template_part('post_meta');?>
                                 <?php the_content();?>
-                                <div class="comment_cstm">
-                                    <?php comments_template();?>
-                                </div>
                             </article>
                         </div>
                         <?php endwhile;
@@ -21,8 +21,6 @@
                     endif;
                 ?>
             </div>
-            <?php get_template_part('custom_pagination');?>
         </article>
-        <?php get_sidebar();?>
     </main>
 <?php get_footer();?>
