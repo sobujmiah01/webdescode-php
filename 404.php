@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-
 <div class="error-404">
     <div class="error-content">
         <h1>Oops! Page not found.</h1>
@@ -15,5 +14,4 @@
         <p>You can also navigate back to the <a href="<?php echo esc_url(home_url('/')); ?>">homepage</a>.</p>
     </div>
 </div>
-
 <?php get_footer(); ?>
