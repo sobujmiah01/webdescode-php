@@ -1,4 +1,4 @@
-<section class="web_slogan_wrapper">
+<section class="web_slogan_wrapper header_slogan">
     <?php 
     $background_image = get_theme_mod('website_slogan_background'); 
     $background_color = get_theme_mod('website_slogan_background_color');
