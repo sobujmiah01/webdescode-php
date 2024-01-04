@@ -5,7 +5,7 @@
         'twitter' => 'fa-x-twitter',
         'instagram' => 'fa-instagram',
         'youtube' => 'fa-youtube',
-        'linkdin' => 'fa-linkedin-in',
+        'linkedin' => 'fa-linkedin-in',
         'github' => 'fa-github',
     );
 
