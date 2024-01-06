@@ -10,10 +10,6 @@ a {
   color: #000;
 }
 
-li {
-  list-style-type: none;
-}
-
 p {
   font-size: 16px;
   line-height: 150%;
@@ -21,7 +17,7 @@ p {
   padding-bottom: 10px;
 }
 
-h2 {
+h1, h2, h3, h4, h5 {
   line-height: 180%;
 }
 
@@ -62,6 +58,7 @@ header .header_top nav ul {
 }
 header .header_top nav ul li {
   padding-left: 5px;
+  list-style-type: none;
 }
 header .header_top nav ul li:hover a {
   color: #0071f1;
@@ -72,6 +69,7 @@ header .header_top .social_icon ul {
 }
 header .header_top .social_icon ul li {
   margin-left: 8px;
+  list-style-type: none;
 }
 header .Header_main_menu {
   padding: 2px 25px;
@@ -105,6 +103,7 @@ header .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation ul
 header .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation ul li {
   padding-left: 5px;
   margin-left: 5px;
+  list-style-type: none;
 }
 header .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation ul li a {
   font-size: 20px;
@@ -277,6 +276,7 @@ header .Header_main_menu .search_and_rs .search_aria input {
 }
 .main_article_post aside .sider_bar ul li {
   line-height: 150%;
+  list-style-type: none;
 }
 .main_article_post aside .sider_bar ul li a {
   color: #000000;
@@ -317,6 +317,7 @@ footer .footer_inner .footer_top_wrap .footer_top h2, footer .footer_inner .foot
 }
 footer .footer_inner .footer_top_wrap .footer_top ul li {
   line-height: 120%;
+  list-style-type: none;
 }
 footer .footer_inner .footer_top_wrap .footer_top ul li a {
   color: #fff;
@@ -346,6 +347,7 @@ footer .footer_inner .web_credit .footer_menu nav .menu {
 }
 footer .footer_inner .web_credit .footer_menu nav .menu li {
   margin: 0px 8px;
+  list-style-type: none;
 }
 footer .footer_inner .web_credit .footer_menu nav .menu li a {
   font-size: 16px;
@@ -360,6 +362,7 @@ footer .footer_inner .web_credit .social_media ul {
 }
 footer .footer_inner .web_credit .social_media ul li {
   margin-left: 8px;
+  list-style-type: none;
 }
 footer .footer_inner .web_credit .social_media ul li a {
   color: #fff;

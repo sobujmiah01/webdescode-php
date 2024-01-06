@@ -8,16 +8,13 @@ a{
     text-decoration: none;
     color: #000;
 }
-li{
-    list-style-type: none;
-}
 p{
     font-size: 16px;
     line-height: 150%;
     font-weight: 500;
     padding-bottom: 10px;
 }
-h2{
+h1,h2,h3,h4,h5{
     line-height: 180%;
 }
 h1,h2,h3,h4,h5{
@@ -49,6 +46,7 @@ header{
                 display: flex;
                 li{
                     padding-left: 5px;
+                    list-style-type: none;
                     
                 }
                 li:hover{
@@ -64,6 +62,7 @@ header{
                 display: flex;
                 li{
                     margin-left: 8px;
+                    list-style-type: none;
                 }
             }
         }
@@ -95,6 +94,7 @@ header{
                         li{
                             padding-left: 5px;
                             margin-left: 5px;
+                            list-style-type: none;
                             a{
                                 font-size: 20px;
                             }
@@ -279,6 +279,7 @@ header{
             ul{
                 li{
                     line-height: 150%;
+                    list-style-type: none;
                     a{
                         color: #000000;
                     }
@@ -319,6 +320,7 @@ footer{
                 ul{
                     li{
                         line-height: 120%;
+                        list-style-type: none;
                         a{
                             color: #fff;
                         }
@@ -349,6 +351,7 @@ footer{
                         justify-content: center;
                         li{
                             margin: 0px 8px;
+                            list-style-type: none;
                             a{
                                 font-size: 16px;
                                 color: #fff;
@@ -366,6 +369,7 @@ footer{
                     display: flex;
                     li{
                         margin-left: 8px;
+                        list-style-type: none;
                         a{
                             color: #fff;
                         }
