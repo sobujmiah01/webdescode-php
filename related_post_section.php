@@ -1,0 +1,1 @@
+<?php example_cats_related_post('More Posts You Might Like >') ?>

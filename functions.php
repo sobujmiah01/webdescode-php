@@ -9,6 +9,10 @@ function enqueue_theme_styles_scripts() {
     wp_enqueue_script('app-script', get_template_directory_uri() . '/assis/main.js', array('jquery'), null, true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_theme_styles_scripts');
+function enqueue_google_fonts() {
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,300;1,500&display=swap');
+}
+add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
 /* custom logo function */
 function themename_custom_logo_setup() {
     $defaults = array(
@@ -188,3 +192,51 @@ function create_custom_post_type() {
     );
 }
 add_action('init', 'create_custom_post_type');
+function example_cats_related_post($heading = 'Related Posts') {
+
+    $post_id = get_the_ID();
+    $cat_ids = array();
+    $categories = get_the_category($post_id);
+
+    if (!empty($categories) && !is_wp_error($categories)) {
+        foreach ($categories as $category) {
+            array_push($cat_ids, $category->term_id);
+        }
+    }
+
+    $current_post_type = get_post_type($post_id);
+
+    $query_args = array( 
+        'category__in'   => $cat_ids,
+        'post_type'      => $current_post_type,
+        'post__not_in'    => array($post_id),
+        'posts_per_page'  => '4',
+    );
+
+    $related_cats_post = new WP_Query($query_args);
+
+    if ($related_cats_post->have_posts()): ?>
+        <div class="related-posts">
+            <h3><?php echo esc_html($heading); ?></h3>
+            <ul>
+                <?php while ($related_cats_post->have_posts()): $related_cats_post->the_post(); ?>
+                    <li>
+                        <a href="<?php the_permalink(); ?>">
+                            <figure>
+                                <?php the_post_thumbnail('thumbnail'); ?>
+                            </figure>
+                            <?php the_title(); ?>
+                            <div class="post_meta">
+                                <span class="post_time"><?php the_time('d m Y')?></span> |
+                                <span class="post_category"><?php the_category(' , ');?></span>
+                            </div>
+                        </a>
+                    </li>
+                <?php endwhile; ?>
+            </ul>
+        </div>
+    <?php
+        // Restore original Post Data
+        wp_reset_postdata();
+    endif;
+}

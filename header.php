@@ -2,11 +2,11 @@
 <html <?php language_attributes();?>>
 <head>
     <meta charset="<?php bloginfo('charset');?>">
-    <meta name="description" content="Explore the latest trends in website design, development, and theme design development. Learn about SEO and digital marketing strategies for creating a strong online presence. Discover tips on responsive design, user experience, and effective content strategy. Stay informed about web development best practices, security, and performance optimization. Your go-to resource for comprehensive insights into the dynamic world of web solutions and creative design.">
+    <meta name="description" content="Discover the latest in web design, development, and SEO strategies. Explore responsive design, UX, content strategy, and stay updated on web development best practices. Your comprehensive resource for all things web solutions and creative design">
     <meta name="keywords" content="website design, development, theme design development, SEO, digital marketing, web development, responsive design, user experience, online presence, content strategy, search engine optimization, social media marketing, e-commerce solutions, mobile-friendly websites, website maintenance, website security, graphic design, branding, online advertising, website analytics, website performance, website optimization, creative web solutions, internet marketing, website usability, website accessibility, website architecture, CMS integration, website hosting, website trends, website best practices, tutorials, coding">
     <meta name="author" content="webdescode">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php the_title();?></title>
+    <title><?php if (is_single() || is_page()) { wp_title('',true); } elseif(is_front_page()) { bloginfo('description'); } else { bloginfo('description'); } ?> | <?php bloginfo('name');?></title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="assis/main.css">
 <!--     <script src="assis/jquery.js"></script>
