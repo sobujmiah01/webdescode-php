@@ -29,4 +29,4 @@ Contributions, bug reports, and feature requests are welcome! Feel free to submi
 
 ## License
 
-This project is licensed under the [GNU General Public License v3.0](https://github.com/sobujmiah01/webdescode-php/blob/main/LICENSE).
+This project is licensed under the [GNU General Public License v3.0](https://github.com/sobujmiah01/webdescode-php/blob/master/LICENSE.txt).
