@@ -14,6 +14,7 @@ The `webdescode-php` theme is a versatile and customizable WordPress theme desig
 - **Widgets and Sidebars:** Utilize custom widgets and sidebars for enhanced content layout and organization.
 - **Pagination Functionality:** Implement custom pagination for smoother navigation through content.
 - **Custom Post Type - Services:** Introduce a custom post type 'Services' to highlight specific content types.
+- **Related Post Functionality:** Display related posts based on categories, offering users more content engagement.
 
 ## Usage
 
@@ -30,3 +31,12 @@ Contributions, bug reports, and feature requests are welcome! Feel free to submi
 ## License
 
 This project is licensed under the [GNU General Public License v3.0](https://github.com/sobujmiah01/webdescode-php/blob/master/LICENSE.txt).
+
+### Contact and Social Media
+
+Connect with us on social media and visit our website for more information:
+
+- [LinkedIn](https://www.linkedin.com/in/fsobujmiah/)
+- [Facebook](https://www.facebook.com/sobujmiah01/)
+- [YouTube](https://www.youtube.com/@webdescode)
+- [Website](https://www.webdescode.com/)

@@ -82,6 +82,9 @@ header .header_top nav ul li {
 header .header_top nav ul li.current_page_item a {
   color: #0071f1;
 }
+header .header_top nav ul li.menu-item-type-post_type a {
+  color: #0071f1;
+}
 header .header_top nav ul li:hover a {
   color: #0071f1;
   transition: 0.3s ease-in;
