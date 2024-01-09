@@ -44,4 +44,24 @@ Connect with us on social media and visit our website for more information:
 ## Additional Requirement
 
 This theme requires the usage of the Font Awesome plugin to display social media icons.
+
+## Breadcrumbs Customization
+
+To replace the Yoast SEO breadcrumbs with custom breadcrumbs:
+
+1. **Locate the `header.php` file** in your theme.
+2. **Remove the following code** responsible for displaying Yoast SEO breadcrumbs:
+
+## Breadcrumbs Customization
+
+To replace the Yoast SEO breadcrumbs with custom breadcrumbs:
+
+1. **Locate the `header.php` file** in your theme.
+2. **Remove the following code** responsible for displaying Yoast SEO breadcrumbs:
+
+```php
+<?php if ( function_exists('yoast_breadcrumb') ) {
+    yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
+} ?>
+
 If you're happy with our theme, don't forget to leave us a smile! 😊
