@@ -1,19 +1,36 @@
-<?php 
+<?php
+/**
+ * Enqueue styles and scripts for the theme.
+ */
 function enqueue_theme_styles_scripts() {
     // Enqueue main stylesheet
-    wp_enqueue_style('stylesheet', get_template_directory_uri());
-    wp_enqueue_style('main-style', get_template_directory_uri() . '/assis/main.css', null, true);
-    // Enqueue Font Awesome
-    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+    wp_enqueue_style('main-style', get_template_directory_uri() . '/assis/main.css', array(), '1.0.0', 'all');
     // Enqueue custom script
-    wp_enqueue_script('app-script', get_template_directory_uri() . '/assis/main.js', array('jquery'), null, true);
+    wp_enqueue_script('app-script', get_template_directory_uri() . '/assis/main.js', array('jquery'), '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_theme_styles_scripts');
+/**
+ * Enqueue Google Fonts.
+ */
 function enqueue_google_fonts() {
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,300;1,500&display=swap');
+    wp_enqueue_style(
+        'google-fonts',
+        'https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,300;1,500&display=swap'
+    );
+
+    // Fallback font
+    wp_enqueue_style(
+        'fallback-font',
+        'https://fonts.googleapis.com/css?family=Roboto:400,500,700',
+        array('google-fonts'), // Dependency on the Google Fonts stylesheet
+        null // Version number, set to null to prevent conflicts
+    );
 }
 add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
-/* custom logo function */
+
+/**
+ * Theme setup for custom logo.
+ */
 function themename_custom_logo_setup() {
     $defaults = array(
         'height'               => 100,
@@ -26,6 +43,9 @@ function themename_custom_logo_setup() {
     add_theme_support( 'custom-logo', $defaults );
 }
 add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
+/**
+ * Register navigation menus.
+ */
 function webdescode_register_menus() {
     register_nav_menus(array(
         'header_menu' => __('Header Menu', 'webdescode'),
@@ -34,7 +54,11 @@ function webdescode_register_menus() {
     ));
 }
 add_action('init', 'webdescode_register_menus');
+/**
+ * Add theme support for post thumbnails.
+ */
 add_theme_support('post-thumbnails');
+// Function to register customizer settings for social media and website slogan
 function webdescode_customize_register($wp_customize) {
     // Add Social Media Section
     $wp_customize->add_section('webdescode_social_section', array(
@@ -114,17 +138,18 @@ function new_excerpt_more($more) {
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
-// Set custom excerpt length
+// Setting custom excerpt length
 function custom_excerpt_length($length) {
     return 50; // Change this number to the desired length of words
 }
 add_filter('excerpt_length', 'custom_excerpt_length', 999);
 
-// Apply custom excerpt length
+// Applying custom excerpt length
 function apply_custom_excerpt_length() {
     add_filter('excerpt_length', 'custom_excerpt_length');
 }
 add_action('after_setup_theme', 'apply_custom_excerpt_length');
+// Registering sidebar widgets
 function ourWidgetInit(){
     register_sidebar(array(
         'name' => 'Primary Sidebar',
@@ -144,6 +169,7 @@ function ourWidgetInit(){
     ));
 }
 add_action('widgets_init' , 'ourWidgetInit');
+// Pagination function
 function pagination($pages = '', $range = 4){
     $showitems = ($range * 2) + 1;
     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
@@ -177,6 +203,7 @@ function pagination($pages = '', $range = 4){
         echo '</ul></div>';
     }
 }
+// Function to create a custom post type 'services'
 function create_custom_post_type() {
     register_post_type('services',
         array(
@@ -192,8 +219,8 @@ function create_custom_post_type() {
     );
 }
 add_action('init', 'create_custom_post_type');
+// Function to display related posts based on categories
 function example_cats_related_post($heading = 'Related Posts') {
-
     $post_id = get_the_ID();
     $cat_ids = array();
     $categories = get_the_category($post_id);

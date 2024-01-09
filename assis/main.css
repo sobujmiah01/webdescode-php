@@ -82,9 +82,6 @@ header .header_top nav ul li {
 header .header_top nav ul li.current_page_item a {
   color: #0071f1;
 }
-header .header_top nav ul li.menu-item-type-post_type a {
-  color: #0071f1;
-}
 header .header_top nav ul li:hover a {
   color: #0071f1;
   transition: 0.3s ease-in;
@@ -168,6 +165,7 @@ header .Header_main_menu .search_and_rs .search_aria button[type=submit]:focus-w
 header .Header_main_menu .search_and_rs .search_aria input {
   height: 35px;
   width: 180px;
+  padding-left: 2px;
 }
 
 /* web_slogan_wrapper */

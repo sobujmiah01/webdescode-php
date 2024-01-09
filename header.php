@@ -7,10 +7,6 @@
     <meta name="author" content="webdescode">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php if (is_single() || is_page()) { wp_title('',true); } elseif(is_front_page()) { bloginfo('description'); } else { bloginfo('description'); } ?> | <?php bloginfo('name');?></title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="assis/main.css">
-<!--     <script src="assis/jquery.js"></script>
-    <script src="assis/main.js"></script> -->
     <?php wp_head();?>
 </head>
 <body <?php body_class();?>>
