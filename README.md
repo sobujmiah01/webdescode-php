@@ -40,3 +40,8 @@ Connect with us on social media and visit our website for more information:
 - [Facebook](https://www.facebook.com/sobujmiah01/)
 - [YouTube](https://www.youtube.com/@webdescode)
 - [Website](https://www.webdescode.com/)
+
+## Additional Requirement
+
+This theme requires the usage of the Font Awesome plugin to display social media icons.
+If you're happy with our theme, don't forget to leave us a smile! 😊
