@@ -1,7 +1,7 @@
 <?php get_header();?>
     <main class="main_article_post">
         <article class="web_post_wrapper">
-            <div class="web_post_inner">
+            <div class="web_post_inner pageWp">
                 <?php get_template_part('normal_loop')?>
             </div>
         </article>
