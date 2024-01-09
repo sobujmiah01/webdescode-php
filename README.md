@@ -63,5 +63,7 @@ To replace the Yoast SEO breadcrumbs with custom breadcrumbs:
 <?php if ( function_exists('yoast_breadcrumb') ) {
     yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
 } ?>
+```
+*This README section provides clear steps on how to replace the Yoast SEO breadcrumbs with custom breadcrumbs in your WordPress theme.*
 
 If you're happy with our theme, don't forget to leave us a smile! 😊
