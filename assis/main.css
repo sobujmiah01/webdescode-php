@@ -797,6 +797,34 @@ p.comment-form-comment {
 .main_article_post.full_page_template .box_wrapper .content_position p i {
   font-size: 50px;
 }
+.main_article_post.full_page_template .Contact_o7 {
+  width: 90%;
+  margin: 0 auto;
+}
+.main_article_post.full_page_template .Contact_o7 input[type=email],
+.main_article_post.full_page_template .Contact_o7 input[type=text],
+.main_article_post.full_page_template .Contact_o7 textarea {
+  width: 100%;
+  max-width: 100%;
+}
+.main_article_post.full_page_template .has-text-align-center.contp {
+  width: 700px;
+  margin: 2em auto;
+}
+.main_article_post.full_page_template .wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required {
+  padding: 4px;
+  margin-bottom: 1em;
+}
+.main_article_post.full_page_template .copy-the-code-wrap {
+  display: inline-block;
+  position: relative;
+  background-color: #00008B;
+}
+.main_article_post.full_page_template .copy-the-code-wrap .copy-the-code-target {
+  margin-top: 0;
+  padding: 4px;
+  color: #ffffff;
+}
 
 @media screen and (max-width: 600px) {
   .main_article_post.full_page_template .HWAbout_slogan_wrapper .aboutSlogan_inner .about_slogan,
@@ -814,27 +842,11 @@ p.comment-form-comment {
     width: 96%;
   }
 }
-.Contact_o7 {
-  width: 90%;
-  margin: 0 auto;
-}
-.Contact_o7 input[type=email],
-.Contact_o7 input[type=text],
-.Contact_o7 textarea {
-  width: 100%;
-  max-width: 100%;
-}
-
 @media screen and (max-width: 510px) {
   .Contact_o7 {
     width: 100%;
   }
 }
-.has-text-align-center.contp {
-  width: 700px;
-  margin: 2em auto;
-}
-
 @media screen and (max-width: 650px) {
   .has-text-align-center.contp {
     width: 100%;
@@ -843,23 +855,6 @@ p.comment-form-comment {
     font-size: 15px;
   }
 }
-.wpcf7-form-control.wpcf7-text.wpcf7-validates-as-required {
-  padding: 4px;
-  margin-bottom: 1em;
-}
-
-.copy-the-code-wrap {
-  display: inline-block;
-  position: relative;
-  background-color: #00008B;
-}
-
-.copy-the-code-wrap .copy-the-code-target {
-  margin-top: 0;
-  padding: 4px;
-  color: #ffffff;
-}
-
 @media screen and (max-width: 600px) {
   h2, h3, h4, h5, h6, h1 {
     font-size: 16px;
