@@ -12,7 +12,7 @@
     foreach ($social_icons as $network => $icon) {
         $url = get_theme_mod('social_' . $network);
         if ($url) {
-            echo '<li><a href="' . esc_url($url) . '" target="_blank"><i class="fa-brands ' . $icon . '"></i></a></li>';
+            echo '<li><a href="' . esc_url($url) . '" target="_blank" aria-label="' . ucfirst($network) . '"><i class="fa-brands ' . $icon . '"></i></a></li>';
         }
     }
     ?>

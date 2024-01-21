@@ -556,7 +556,6 @@ footer{
       }
 }
 // Contact 7 style 
-
 input[type="text"]{
     outline: none;
 }
@@ -603,12 +602,10 @@ textarea{
         margin-bottom: 20px;
     }
 }
-
 .error-content h1 {
     font-size: 3em;
     margin-bottom: 20px;
 }
-
 .error-content p {
     font-size: 1.1em;
     margin-bottom: 15px;
@@ -619,7 +616,6 @@ textarea{
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
 .search-submit {
     display: block;
     width: 100%;
@@ -632,11 +628,9 @@ textarea{
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 .search-submit:hover {
     background-color: #555;
 }
-
 .error-content a {
     color: #0073aa;
     text-decoration: underline;
@@ -645,48 +639,39 @@ textarea{
 .comments-area {
     margin-top: 10px;
 }
-
 .comments-title {
     font-size: 24px;
     margin-bottom: 10px;
 }
-
 .comment-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-
 .comment-list li {
     margin-bottom: 10px;
     border-bottom: 1px solid #eee;
     padding-bottom: 20px;
 }
-
 .comment-author {
     font-weight: bold;
     margin-bottom: 5px;
 }
-
 .comment-metadata {
     color: #888;
     font-size: 14px;
 }
-
 .comment-content {
     margin-top: 10px;
 }
-
 .comment-form {
     margin-top: 10px;
 }
-
 .comment-form input[type="text"],
 .comment-form textarea {
     padding: 4px;
     margin-bottom: 15px;
 }
-
 .comment-form input[type="submit"] {
     background-color: #007bff;
     color: #fff;
@@ -694,7 +679,6 @@ textarea{
     padding: 10px 20px;
     cursor: pointer;
 }
-
 .comment-form input[type="submit"]:hover {
     background-color: #0056b3;
 }
@@ -704,11 +688,9 @@ textarea{
     padding: 0;
     margin: 0;
 }
-
 .commentlist li {
     margin-bottom: 30px;
 }
-
 /* Comment Body */
 .comment_cstm {
     margin-top: 20px;
@@ -824,13 +806,6 @@ p.comment-form-comment {
         }
     }
 }
-// Contact 7 customize code 
-/* input[type="email"],
-input[type="text"],
-textarea{
-    width: 100%;
-    max-width: 100%;
-} */
 .Contact_o7 {
     width: 90%;
     margin: 0 auto;
