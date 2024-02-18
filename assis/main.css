@@ -5,11 +5,6 @@
   font-family: "Raleway", sans-serif;
 }
 
-a {
-  text-decoration: none;
-  color: #000;
-}
-
 p {
   font-size: 15px;
   line-height: 1.6em;
@@ -41,7 +36,6 @@ h6 {
 }
 
 h1, h2, h3, h4, h5 {
-  font-size: 18px;
   text-transform: capitalize;
 }
 
@@ -79,11 +73,15 @@ header .header_top nav ul li {
   padding-left: 5px;
   list-style-type: none;
 }
+header .header_top nav ul li a {
+  text-decoration: none;
+  color: #000;
+}
 header .header_top nav ul li.current_page_item a {
-  color: #0071f1;
+  color: #080808;
 }
 header .header_top nav ul li:hover a {
-  color: #0071f1;
+  color: #080808;
   transition: 0.3s ease-in;
 }
 header .header_top .social_icon ul {
@@ -129,13 +127,15 @@ header .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation ul
 }
 header .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation ul li a {
   font-size: 20px;
+  text-decoration: none;
+  color: #000;
 }
 header .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation ul li:hover a {
-  color: #0071f1;
+  color: #080808;
   transition: 0.3s ease-in;
 }
 header .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation ul li.current_page_item a {
-  color: #0071f1;
+  color: #080808;
 }
 header .Header_main_menu .search_and_rs {
   display: grid;
@@ -236,8 +236,12 @@ header .Header_main_menu .search_and_rs .search_aria input {
   padding: 4px;
   font-size: 14px;
 }
+.main_article_post .web_post_wrapper .web_post_inner .post_wrapper .post_meta .post_category a {
+  color: #000;
+  text-decoration: none;
+}
 .main_article_post .web_post_wrapper .web_post_inner .post_wrapper .post_meta .post_category:hover a {
-  color: #1266d3;
+  color: #080808;
 }
 .main_article_post .web_post_wrapper .web_post_inner .post_wrapper p .moretag {
   color: #0071f0;
@@ -289,6 +293,10 @@ header .Header_main_menu .search_and_rs .search_aria input {
   padding-left: 0px;
   padding-right: 0px;
   border-bottom: 1px solid transparent;
+}
+.main_article_post .web_post_wrapper .web_post_inner .post_wrapper.single_postWP .related_post_wp .related-posts ul li a {
+  text-decoration: none;
+  color: #000;
 }
 .main_article_post .web_post_wrapper .pagination_section {
   width: 100%;
@@ -349,10 +357,12 @@ header .Header_main_menu .search_and_rs .search_aria input {
   list-style-type: none;
 }
 .main_article_post aside .sider_bar ul li a {
-  color: #000000;
+  color: #000;
+  text-decoration: none;
+  text-transform: capitalize;
 }
 .main_article_post aside .sider_bar ul li a:hover {
-  color: #0e67d7;
+  color: #080808;
   transition: 0.4s ease-in;
 }
 
@@ -670,7 +680,7 @@ textarea {
 }
 
 .comment-form input[type=submit] {
-  background-color: #007bff;
+  background-color: #000;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -678,7 +688,7 @@ textarea {
 }
 
 .comment-form input[type=submit]:hover {
-  background-color: #0056b3;
+  background-color: #080808;
 }
 
 /* Comment List */
@@ -824,6 +834,15 @@ p.comment-form-comment {
   margin-top: 0;
   padding: 4px;
   color: #ffffff;
+}
+
+.comment-meta.commentmetadata .reply a {
+  text-decoration: none;
+  color: #000;
+}
+.comment-meta.commentmetadata a {
+  text-decoration: none;
+  color: #000;
 }
 
 @media screen and (max-width: 600px) {
