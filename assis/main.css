@@ -124,8 +124,8 @@ header .Header_main_menu .menu_wrapper .logo_menu_wrapper a.web_logoL {
   width: 50px;
 }
 header .Header_main_menu .menu_wrapper .logo_menu_wrapper a.web_logoL img {
-  width: 100%;
-  max-width: 100%;
+  width: 50px;
+  max-width: 50px;
 }
 header .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation {
   width: 100%;
@@ -187,7 +187,7 @@ header .Header_main_menu .search_and_rs .search_aria input {
 .web_slogan_wrapper.header_slogan {
   width: 100%;
   max-width: 100vw;
-  height: 300px;
+  height: 200px;
 }
 .web_slogan_wrapper.header_slogan .web_slogan {
   padding: 8px 25px;
@@ -208,7 +208,7 @@ header .Header_main_menu .search_and_rs .search_aria input {
   max-width: 900px;
 }
 .web_slogan_wrapper.header_slogan .web_slogan .slogan_article p {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .main_article_post {
@@ -265,6 +265,44 @@ header .Header_main_menu .search_and_rs .search_aria input {
 .main_article_post .web_post_wrapper .web_post_inner .post_wrapper .article_content p {
   margin-top: 1em;
 }
+.main_article_post .web_post_wrapper .web_post_inner .post_wrapper .article_content .moretag {
+  margin-left: 0.3em;
+  text-decoration: none;
+}
+.main_article_post .web_post_wrapper .web_post_inner .post_wrapper.single_postWP {
+  grid-template-columns: 1fr;
+}
+.main_article_post .web_post_wrapper .web_post_inner .post_wrapper.single_postWP article .related_post_wp {
+  width: 100%;
+  box-sizing: border-box;
+}
+.main_article_post .web_post_wrapper .web_post_inner .post_wrapper.single_postWP article .related_post_wp .related-posts {
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.main_article_post .web_post_wrapper .web_post_inner .post_wrapper.single_postWP article .related_post_wp .related-posts ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
+  grid-gap: 0.5em;
+}
+.main_article_post .web_post_wrapper .web_post_inner .post_wrapper.single_postWP article .related_post_wp .related-posts ul li {
+  list-style-type: none;
+  border: 1px solid rgba(155, 155, 155, 0.15);
+  border-radius: 8%;
+}
+.main_article_post .web_post_wrapper .web_post_inner .post_wrapper.single_postWP article .related_post_wp .related-posts ul li a {
+  padding: 0.2em;
+}
+.main_article_post .web_post_wrapper .web_post_inner .post_wrapper.single_postWP article .related_post_wp .related-posts ul li a figure {
+  width: 100%;
+  max-width: 100%;
+}
+.main_article_post .web_post_wrapper .web_post_inner .post_wrapper.single_postWP article .related_post_wp .related-posts ul li a figure img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
 .main_article_post .web_post_wrapper .web_post_inner:first-of-type {
   margin-top: 0.3em;
 }
@@ -284,14 +322,6 @@ header .Header_main_menu .search_and_rs .search_aria input {
 }
 .main_article_post aside .sider_bar ul li {
   list-style-type: none;
-  display: flex;
-  align-items: center;
-}
-.main_article_post aside .sider_bar ul li div img {
-  max-width: 100px;
-  width: 100px;
-  height: 68px;
-  border-radius: 8px;
 }
 .main_article_post aside .sider_bar ul li a {
   color: #000;
@@ -341,6 +371,36 @@ header .Header_main_menu .search_and_rs .search_aria input {
   line-height: 180%;
 }
 
+@media screen and (max-width: 980px) {
+  .main_article_post {
+    grid-template-columns: 1fr;
+  }
+  .main_article_post aside {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 680px) {
+  .main_article_post .web_post_wrapper .web_post_inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
+    grid-gap: 0.5em;
+  }
+  .main_article_post .web_post_wrapper .web_post_inner .post_wrapper {
+    grid-template-columns: 1fr;
+    margin-bottom: 0;
+  }
+  .main_article_post .web_post_wrapper .web_post_inner .post_wrapper figure {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .main_article_post .web_post_wrapper .web_post_inner .post_wrapper figure a img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+}
 .main_article_post.full_page_template {
   display: block;
   max-width: 100%;
