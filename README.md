@@ -15,6 +15,8 @@ The `webdescode-php` theme is a versatile and customizable WordPress theme desig
 - **Pagination Functionality:** Implement custom pagination for smoother navigation through content.
 - **Custom Post Type - Services:** Introduce a custom post type 'Services' to highlight specific content types.
 - **Related Post Functionality:** Display related posts based on categories, offering users more content engagement.
+- **Custom copy clipborad:** No need to use copy clipborad plugin.
+- **Highlight code :** when you want to show any code for visitor.
 
 ## Usage
 
@@ -40,6 +42,7 @@ Connect with us on social media and visit our website for more information:
 - [Facebook](https://www.facebook.com/sobujmiah01/)
 - [YouTube](https://www.youtube.com/@webdescode)
 - [Website](https://www.webdescode.com/)
+- [Portfolio](https://www.sobujmiah.com/)
 
 ## Additional Requirement
 
