@@ -1,4 +1,9 @@
 <?php
+function enqueue_prism() {
+    wp_enqueue_style('prism', get_template_directory_uri() . '/prism/prism.css');
+    wp_enqueue_script('prism', get_template_directory_uri() . '/prism/prism.js', array(), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_prism');
 /**
  * Enqueue styles and scripts for the theme.
  */
@@ -170,10 +175,10 @@ function ourWidgetInit(){
 }
 add_action('widgets_init' , 'ourWidgetInit');
 // Pagination function
-function pagination($pages = '', $range = 4){
+function custom_pagination($pages = '', $range = 4){
     $showitems = ($range * 2) + 1;
     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
-   
+
     if(empty($pages)) {
         global $wp_query;
         $pages = $wp_query->max_num_pages;
@@ -181,25 +186,41 @@ function pagination($pages = '', $range = 4){
             $pages = 1;
         }
     }
+
     if(1 != $pages){
         echo '<div class="pagination"><span class="current-page">Page '.$paged.' of '.$pages.'</span><ul class="pagination-list">';
+        
+        // Calculate start and end pages based on the clicked page
+        $start = max(1, $paged - 2);
+        $end = min($paged + 1, $pages);
+
+        // Left arrow
         if($paged > 2 && $paged > $range + 1 && $showitems < $pages) {
             echo '<li class="pagination-item"><a href="'.esc_url(get_pagenum_link(1)).'">&laquo; First</a></li>';
         }
+
+        // Previous arrow
         if($paged > 1 && $showitems < $pages) {
             echo '<li class="pagination-item"><a href="'.esc_url(get_pagenum_link($paged - 1)).'">&lsaquo; Previous</a></li>';
         }
-        for($i = 1; $i <= $pages; $i++){
+
+        // Page numbers
+        for($i = $start; $i <= $end; $i++){
             if(1 != $pages && (!($i >= $paged + $range + 1 || $i <= $paged - $range - 1) || $pages <= $showitems)) {
                 echo ($paged == $i)? '<li class="pagination-item active"><span class="current-page">'.$i.'</span></li>' : '<li class="pagination-item"><a href="'.esc_url(get_pagenum_link($i)).'" class="inactive">'.$i.'</a></li>';
             }
         }
+
+        // Next arrow
         if($paged < $pages && $showitems < $pages) {
             echo '<li class="pagination-item"><a href="'.esc_url(get_pagenum_link($paged + 1)).'">Next &rsaquo;</a></li>';
         }
+
+        // Last arrow
         if($paged < $pages - 1 && $paged + $range - 1 < $pages && $showitems < $pages) {
             echo '<li class="pagination-item"><a href="'.esc_url(get_pagenum_link($pages)).'">Last &raquo;</a></li>';
         }
+
         echo '</ul></div>';
     }
 }

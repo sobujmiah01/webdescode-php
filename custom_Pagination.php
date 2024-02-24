@@ -1,3 +1,3 @@
 <div class="pagination_section">
-    <?php pagination()?>   
+    <?php custom_pagination()?>   
 </div>

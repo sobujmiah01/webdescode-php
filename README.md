@@ -51,6 +51,20 @@ To replace the Yoast SEO breadcrumbs with custom breadcrumbs:
 
 1. **Locate the `header.php` file** in your theme.
 2. **Remove the following code** responsible for displaying Yoast SEO breadcrumbs:
+## Do you want to use these three on block post web site?
+If you want to use it as a block post website then remove the following code from the function file
+```php
+function enqueue_prism() {
+    wp_enqueue_style('prism', get_template_directory_uri() . '/prism/prism.css');
+    wp_enqueue_script('prism', get_template_directory_uri() . '/prism/prism.js', array(), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_prism');
+```
+or you want developer document website. follow me: 
+```php
+<code class="preformatted-text line-numbers language-js"></code>
+```
+**no need to copy clipborad plugin**. we are added custom copy clipboard.
 
 ## Breadcrumbs Customization
 

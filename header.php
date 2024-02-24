@@ -48,9 +48,12 @@
                 </div>
                 <div class="search_and_rs">
                     <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                        <i class="fas fa-search"></i>
                         <div class="search_aria">
-                            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <input type="search" name="s" id="search" placeholder="search tutorials" value="<?php echo get_search_query(); ?>">
+                            <div class="wp-rs">
+                                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <input type="search" name="s" id="search" placeholder="search tutorials" value="<?php echo get_search_query(); ?>">
+                            </div>
                         </div>
                     </form>
                     <!-- Responsive Menu Icon -->
