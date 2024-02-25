@@ -19,13 +19,13 @@ p{
     padding-bottom: 10px;
 }
 h1{
-    line-height: 1.6em;
+    line-height: 1.2em;
 }
 h2{
-    line-height: 1.5em;
+    line-height: 1.2em;
 }
 h3{
-    line-height: 1.4em;
+    line-height: 1em;
 }
 h4{
     line-height: 1.2em;
@@ -446,9 +446,15 @@ footer{
                 ul{
                     li{
                         list-style-type: none;
+                        transition: 0.4s ease-in-out;
                         a{
                             color: #fff;
                             text-decoration: none;
+                        }
+                    }
+                    li:hover{
+                        a{
+                            color: $hText;
                         }
                     }
                 }

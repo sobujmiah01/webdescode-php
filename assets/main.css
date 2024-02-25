@@ -23,15 +23,15 @@ p {
 }
 
 h1 {
-  line-height: 1.6em;
+  line-height: 1.2em;
 }
 
 h2 {
-  line-height: 1.5em;
+  line-height: 1.2em;
 }
 
 h3 {
-  line-height: 1.4em;
+  line-height: 1em;
 }
 
 h4 {
@@ -435,10 +435,14 @@ footer .footer_inner .footer_top_wrap .footer_top h2, footer .footer_inner .foot
 }
 footer .footer_inner .footer_top_wrap .footer_top ul li {
   list-style-type: none;
+  transition: 0.4s ease-in-out;
 }
 footer .footer_inner .footer_top_wrap .footer_top ul li a {
   color: #fff;
   text-decoration: none;
+}
+footer .footer_inner .footer_top_wrap .footer_top ul li:hover a {
+  color: #ff0000;
 }
 footer .footer_inner .web_credit {
   border-top: 1px solid #5c5d62;
