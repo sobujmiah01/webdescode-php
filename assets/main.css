@@ -69,6 +69,18 @@ iframe {
   margin: 8px 0px;
 }
 
+.breadcrumbss {
+  max-width: 1281px;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 8px;
+}
+.breadcrumbss #breadcrumbs {
+  padding-bottom: 0px;
+  padding-left: 8px;
+  margin-left: 8px;
+}
+
 header {
   width: 100%;
   max-width: 100vw;
@@ -192,34 +204,6 @@ header .header_wrapper .Header_main_menu .search_and_rs .search_aria input[type=
 header .header_wrapper .Header_main_menu .search_and_rs .search_aria input[type=search]:focus {
   width: 240px;
   border-bottom: 1px solid #006ff3;
-}
-
-/* web_slogan_wrapper */
-.web_slogan_wrapper.header_slogan {
-  width: 100%;
-  max-width: 100vw;
-  height: 300px;
-}
-.web_slogan_wrapper.header_slogan .web_slogan {
-  padding: 8px 8px;
-  color: white;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.web_slogan_wrapper.header_slogan .web_slogan .slogan_article {
-  --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
-  padding-right: calc(var(--bs-gutter-x) * 0.5);
-  padding-left: calc(var(--bs-gutter-x) * 0.5);
-  margin: 0 auto;
-  color: white;
-  max-width: 900px;
-}
-.web_slogan_wrapper.header_slogan .web_slogan .slogan_article p {
-  font-size: 18px;
 }
 
 .main_article_post {

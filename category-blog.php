@@ -1,6 +1,4 @@
 <?php get_header();?>
-    <?php get_template_part('web_slogan');?>
-    <h1>Hello Category</h1>
     <main class="main_article_post">
         <article class="web_post_wrapper">
             <div class="web_post_inner">

@@ -1,7 +1,7 @@
 <?php
 function enqueue_prism() {
-    wp_enqueue_style('prism', get_template_directory_uri() . '/prism/prism.css', '1.0.1', 'all');
-    wp_enqueue_script('prism', get_template_directory_uri() . '/prism/prism.js', array(), '1.0.1', true);
+    wp_enqueue_style('prism', get_template_directory_uri() . '/prism/prism.css', '1.0.2', 'all');
+    wp_enqueue_script('prism', get_template_directory_uri() . '/prism/prism.js', array(), '1.0.2', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_prism');
 /**
@@ -9,10 +9,10 @@ add_action('wp_enqueue_scripts', 'enqueue_prism');
  */
 function enqueue_theme_styles_scripts() {
     // Enqueue main stylesheet
-    wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/main.css', array(), '1.0.1', 'all');
-    wp_enqueue_style('res-style', get_template_directory_uri() . '/assets/res-mobile.css', array(), '1.0.1', 'all');
+    wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/main.css', array(), '1.0.2', 'all');
+    wp_enqueue_style('res-style', get_template_directory_uri() . '/assets/res-mobile.css', array(), '1.0.2', 'all');
     // Enqueue custom script
-    wp_enqueue_script('app-script', get_template_directory_uri() . '/assets/main.js', array('jquery'), '1.0.1', true);
+    wp_enqueue_script('app-script', get_template_directory_uri() . '/assets/main.js', array('jquery'), '1.0.2', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_theme_styles_scripts');
 /**
@@ -93,48 +93,6 @@ function webdescode_customize_register($wp_customize) {
             'type' => 'url',
         ));
     }
-// Add Website Slogan Section
-$wp_customize->add_section('webdescode_slogan_section', array(
-    'title' => __('Website Slogan', 'webdescode'),
-    'priority' => 40,
-));
-
-// Add Background Image Setting
-$wp_customize->add_setting('website_slogan_background', array(
-    'default' => '',
-    'sanitize_callback' => 'esc_url_raw',
-));
-
-$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'website_slogan_background', array(
-    'label' => __('Background Image', 'webdescode'),
-    'section' => 'webdescode_slogan_section',
-    'settings' => 'website_slogan_background',
-)));
-
-// Add Background Color Setting
-$wp_customize->add_setting('website_slogan_background_color', array(
-    'default' => '',
-    'sanitize_callback' => 'sanitize_hex_color',
-));
-
-$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'website_slogan_background_color', array(
-    'label' => __('Background Color', 'webdescode'),
-    'section' => 'webdescode_slogan_section',
-    'settings' => 'website_slogan_background_color',
-)));
-
-// Add Slogan Text Setting
-$wp_customize->add_setting('website_slogan_text', array(
-    'default' => '',
-    'sanitize_callback' => 'sanitize_text_field',
-));
-
-$wp_customize->add_control('website_slogan_text', array(
-    'label' => __('Slogan Text', 'webdescode'),
-    'section' => 'webdescode_slogan_section',
-    'type' => 'text',
-));
-    
 }
 add_action('customize_register', 'webdescode_customize_register');
 // Replaces the excerpt "Read More" text by a link
