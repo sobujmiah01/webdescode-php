@@ -51,7 +51,7 @@
                         <i class="fas fa-search"></i>
                         <div class="search_aria">
                             <div class="wp-rs">
-                                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
                                 <input type="search" name="s" id="search" placeholder="search tutorials" value="<?php echo get_search_query(); ?>">
                             </div>
                         </div>

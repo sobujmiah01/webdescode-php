@@ -1,0 +1,171 @@
+@media screen and (max-width: 1500px){
+    .main_article_post.full_page_template{
+        .box_wrapper{
+            width: 80%;
+        }
+    }
+}
+@media screen and (max-width: 980px){
+    .main_article_post{
+        grid-template-columns: 1fr;
+        aside{
+            max-width: 100%;
+        }
+    }
+}
+@media screen and (max-width: 935px){
+    h1{
+        line-height: 0.8em;
+    }
+    h2{
+        line-height: 0.7em;
+    }
+    h3{
+        line-height: 0.6em;
+    }
+    h4{
+        line-height: 0.5em;
+    }
+    h5{
+        line-height: 0.5em;
+    }
+    h6{
+        line-height: 0.5em;
+    }
+    header{
+        .Header_main_menu{
+            position: relative;
+            .menu_wrapper{
+                .logo_menu_wrapper{
+                    nav.main_navigation{
+                        position: absolute;
+                        background-color: #fff;
+                        top: 57px;
+                        padding: 8px 0px;
+                        left: 0;
+                        ul{
+                            flex-direction: column;
+                            li{
+                                margin: 3px 0px;
+                            }
+                        }
+                    }
+                }
+            }
+            .search_and_rs{
+                .icon_menu{
+                    display: block;
+                    font-size: 20px;
+                }
+                .search_aria{
+                    button{
+                        right: 26px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 900px){
+    .main_article_post.full_page_template{
+        .box_wrapper{
+            width: 96%;
+        }
+    }
+}
+@media screen and (max-width: 700px){
+    footer .footer_inner .web_credit{
+        display: block;
+    }
+}
+@media screen and (max-width: 680px){
+    .main_article_post .web_post_wrapper .web_post_inner{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
+        grid-gap: 0.5em;
+        .post_wrapper{
+            grid-template-columns: 1fr;
+            margin-bottom: 0;
+            figure{
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: center;
+                a{
+                    img{
+                        max-width: 100%;
+                        width: 100vw;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 650px){
+    .has-text-align-center.contp{
+        width:100%;
+    }
+    .web_slogan_wrapper.header_slogan .web_slogan .slogan_article p{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 600px){
+    h2,h3,h4,h5,h6,h1{
+        font-size: 16px;
+    }
+    footer .footer_inner .web_credit .footer_menu nav .menu li a,
+    header .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation ul li a,
+    .main_article_post .web_post_wrapper .pagination_section .pagination{
+        font-size: 15px;
+    }
+    .main_article_post.full_page_template .HWAbout_slogan_wrapper .aboutSlogan_inner .about_slogan,
+    .main_article_post.full_page_template .About_slogan_wrapper .aboutSlogan_inner .about_slogan{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 510px){
+    .Contact_o7{
+        width:100%;
+    }
+}
+@media screen and (max-width: 450px){
+    header .Header_main_menu {
+        position: relative;
+        .search_and_rs{
+            .search-form{
+                .search_aria{
+                    display: none;
+                    position: absolute;
+                    left: -25px;
+                    right: 0px;
+                    top: 57px;
+                    width: 100vw;
+                    .wp-rs{
+                        display: flex;
+                        background-color: #f5f5f5;
+                        width: 100%;
+                        padding: 4px 6px;
+                    }
+                    input{
+                        max-width: 100%;
+                        width: 100%;
+                    }
+                    input[type="search"]:focus{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    footer .footer_inner {
+        padding: 8px 16px;
+        .footer_top_wrap{
+            display: flex;
+            flex-direction: column;
+        }
+      }
+      footer .footer_inner .web_credit .footer_menu nav .menu li{
+        margin: 0px 8px 0px 0px;
+      }
+}
