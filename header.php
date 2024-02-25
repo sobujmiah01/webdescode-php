@@ -11,62 +11,64 @@
 </head>
 <body <?php body_class();?>>
     <header>
-        <div class="header_top">
-            <!-- Top Header Menu -->
-            <nav>
-                <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'header_menu',
-                        'container' => 'ul',
-                    ));
-                ?>
-            </nav>
-            <div class="social_icon">
-            <?php get_template_part('social_bar');?>
-            </div>
-        </div>
-        <div class="Header_main_menu">
-            <!-- Main Header Section -->
-            <div class="menu_wrapper">
-                <div class="logo_menu_wrapper">
-                    <a class="web_logoL" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-                        <?php 
-                        $custom_logo_id = get_theme_mod( 'custom_logo' ); 
-                        $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-                        if ( has_custom_logo() ) {
-                        echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '">';
-                        } else {echo '<h1>' . get_bloginfo('name') . '</h1>';}?>
-                    </a>
+        <div class="header_wrapper">
+            <div class="header_top">
+                <!-- Top Header Menu -->
+                <nav>
                     <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'main_menu',
-                        'container' => 'nav',
-                        'container_class'=>'main_navigation',
-                        /* 'menu_class' => 'main_navigation', */
-                    ));
+                        wp_nav_menu(array(
+                            'theme_location' => 'header_menu',
+                            'container' => 'ul',
+                        ));
                     ?>
+                </nav>
+                <div class="social_icon">
+                <?php get_template_part('social_bar');?>
                 </div>
-                <div class="search_and_rs">
-                    <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                        <i class="fas fa-search"></i>
-                        <div class="search_aria">
-                            <div class="wp-rs">
-                            <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                <input type="search" name="s" id="search" placeholder="search tutorials" value="<?php echo get_search_query(); ?>">
+            </div>
+            <div class="Header_main_menu">
+                <!-- Main Header Section -->
+                <div class="menu_wrapper">
+                    <div class="logo_menu_wrapper">
+                        <a class="web_logoL" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                            <?php 
+                            $custom_logo_id = get_theme_mod( 'custom_logo' ); 
+                            $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+                            if ( has_custom_logo() ) {
+                            echo '<img src="' . esc_url( $logo[0] ) . '" alt="' . get_bloginfo( 'name' ) . '">';
+                            } else {echo '<h1>' . get_bloginfo('name') . '</h1>';}?>
+                        </a>
+                        <?php
+                        wp_nav_menu(array(
+                            'theme_location' => 'main_menu',
+                            'container' => 'nav',
+                            'container_class'=>'main_navigation',
+                            /* 'menu_class' => 'main_navigation', */
+                        ));
+                        ?>
+                    </div>
+                    <div class="search_and_rs">
+                        <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                            <i class="fas fa-search"></i>
+                            <div class="search_aria">
+                                <div class="wp-rs">
+                                <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    <input type="search" name="s" id="search" placeholder="search tutorials" value="<?php echo get_search_query(); ?>">
+                                </div>
                             </div>
+                        </form>
+                        <!-- Responsive Menu Icon -->
+                        <div class="icon_menu">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            <i class="fa fa-times" aria-hidden="true"></i>
                         </div>
-                    </form>
-                    <!-- Responsive Menu Icon -->
-                    <div class="icon_menu">
-                        <i class="fa fa-bars" aria-hidden="true"></i>
-                        <i class="fa fa-times" aria-hidden="true"></i>
                     </div>
                 </div>
+                <?php
+                if ( function_exists('yoast_breadcrumb') ) {
+                yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
+                }
+                ?>
             </div>
-            <?php
-            if ( function_exists('yoast_breadcrumb') ) {
-            yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
-            }
-            ?>
         </div>
     </header>

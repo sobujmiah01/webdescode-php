@@ -15,38 +15,44 @@
 }
 @media screen and (max-width: 935px){
     header{
-        .Header_main_menu{
-            position: relative;
-            .menu_wrapper{
-                .logo_menu_wrapper{
-                    nav.main_navigation{
-                        position: absolute;
-                        background-color: #fff;
-                        top: 57px;
-                        padding: 8px 0px;
-                        left: 0;
-                        ul{
-                            flex-direction: column;
-                            li{
-                                margin: 3px 0px;
+        .header_wrapper{
+            .Header_main_menu{
+                position: relative;
+                .menu_wrapper{
+                    .logo_menu_wrapper{
+                        nav.main_navigation{
+                            position: absolute;
+                            background-color: #fff;
+                            top: 57px;
+                            padding: 8px 0px;
+                            left: 0;
+                            ul{
+                                flex-direction: column;
+                                li{
+                                    margin: 3px 0px;
+                                }
                             }
                         }
                     }
                 }
-            }
-            .search_and_rs{
-                .icon_menu{
-                    display: block;
-                    font-size: 20px;
-                }
-                .search_aria{
-                    button{
-                        right: 26px;
+                .search_and_rs{
+                    .icon_menu{
+                        display: block;
+                        font-size: 20px;
+                    }
+                    .search_aria{
+                        button{
+                            right: 26px;
+                        }
                     }
                 }
             }
+            .Header_main_menu .search_and_rs .search_aria input[type="search"]:focus{
+                width: 150px;
+            }
         }
     }
+    
 }
 @media screen and (max-width: 900px){
     .main_article_post.full_page_template{
@@ -119,9 +125,9 @@
                 .search_aria{
                     display: none;
                     position: absolute;
-                    left: -25px;
+                    left: 0px;
                     right: 0px;
-                    top: 57px;
+                    top: 54px;
                     width: 100vw;
                     .wp-rs{
                         display: flex;
