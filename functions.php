@@ -10,7 +10,6 @@ add_action('wp_enqueue_scripts', 'enqueue_prism');
 function enqueue_theme_styles_scripts() {
     // Enqueue main stylesheet
     wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/main.css', array(), '1.0.2', 'all');
-    wp_enqueue_style('res-style', get_template_directory_uri() . '/assets/res-mobile.css', array(), '1.0.2', 'all');
     // Enqueue custom script
     wp_enqueue_script('app-script', get_template_directory_uri() . '/assets/main.js', array('jquery'), '1.0.2', true);
 }
@@ -19,16 +18,18 @@ add_action('wp_enqueue_scripts', 'enqueue_theme_styles_scripts');
  * Enqueue Google Fonts.
  */
 function enqueue_google_fonts() {
+    // Enqueue Google Fonts
     wp_enqueue_style(
         'google-fonts',
-        'https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,300;1,500&display=swap'
+        'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'
     );
 
-    // Fallback font
+    // Fallback font included within the same style handle
+    wp_style_add_data('google-fonts', 'before', '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>');
     wp_enqueue_style(
-        'fallback-font',
-        'https://fonts.googleapis.com/css?family=Roboto:400,500,700',
-        array('google-fonts'), // Dependency on the Google Fonts stylesheet
+        'google-fonts', // Use the same handle as above
+        'https://fonts.googleapis.com/css?family=Roboto:400,500,700', // Fallback font
+        array(), // No dependency needed for the fallback font
         null // Version number, set to null to prevent conflicts
     );
 }
@@ -104,7 +105,7 @@ add_filter('excerpt_more', 'new_excerpt_more');
 
 // Setting custom excerpt length
 function custom_excerpt_length($length) {
-    return 50; // Change this number to the desired length of words
+    return 35; // Change this number to the desired length of words
 }
 add_filter('excerpt_length', 'custom_excerpt_length', 999);
 
@@ -233,10 +234,6 @@ function example_cats_related_post($heading = 'Related Posts') {
                                 <?php the_post_thumbnail('thumbnail'); ?>
                             </figure>
                             <?php the_title(); ?>
-                            <div class="post_meta">
-                                <span class="post_time"><?php the_time('d m Y')?></span> |
-                                <span class="post_category"><?php the_category(' , ');?></span>
-                            </div>
                         </a>
                     </li>
                 <?php endwhile; ?>
