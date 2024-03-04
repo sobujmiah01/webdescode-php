@@ -991,6 +991,19 @@ p.comment-form-comment {
         margin: 0px 8px 0px 0px;
       }
 }
+@media screen and (max-width: 350px){
+    header .header_wrapper .Header_main_menu{
+        padding: 2px 8px 2px 2px;
+    }
+}
+@media screen and (max-width: 315px){
+    header .header_wrapper .Header_main_menu{
+        padding: 2px 8px 2px 0px;
+        .search_and_rs{
+            grid-gap: 0.1em;
+        }
+    } 
+}
 /* ABout page style */
 .post_wrapper.itpage{
     .aboutAuthor{
