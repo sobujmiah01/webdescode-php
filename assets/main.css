@@ -142,11 +142,11 @@ header .header_wrapper .Header_main_menu .menu_wrapper .logo_menu_wrapper {
   align-items: center;
 }
 header .header_wrapper .Header_main_menu .menu_wrapper .logo_menu_wrapper a.web_logoL {
-  width: 200px;
+  width: 250px;
 }
 header .header_wrapper .Header_main_menu .menu_wrapper .logo_menu_wrapper a.web_logoL img {
-  width: 200px;
-  max-width: 200px;
+  width: 250px;
+  max-width: 250px;
   height: 45px;
 }
 header .header_wrapper .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation {
@@ -945,7 +945,7 @@ p.comment-form-comment {
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
   header .Header_main_menu {
     position: relative;
   }
@@ -979,5 +979,31 @@ p.comment-form-comment {
   }
   footer .footer_inner .web_credit .footer_menu nav .menu li {
     margin: 0px 8px 0px 0px;
+  }
+}
+/* ABout page style */
+.post_wrapper.itpage .aboutAuthor {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+.post_wrapper.itpage .aboutAuthor p {
+  margin-right: 10px;
+}
+.post_wrapper.itpage .aboutAuthor img {
+  max-width: 280px;
+  width: 280px;
+  height: auto;
+  border-radius: 4%;
+}
+
+@media screen and (max-width: 640px) {
+  .post_wrapper.itpage .aboutAuthor {
+    display: block;
+  }
+  .post_wrapper.itpage .aboutAuthor img {
+    max-width: 270px;
+    width: 100%;
   }
 }/*# sourceMappingURL=main.css.map */

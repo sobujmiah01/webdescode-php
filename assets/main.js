@@ -60,7 +60,7 @@ jQuery(document).ready(function($) {
     }
 
     function updateUI() {
-        if (jQuery(window).width() <= 450) {
+        if (jQuery(window).width() <= 550) {
             /* $("search_aria").hide(); */
             $(".fas.fa-search").show();
         } else {
