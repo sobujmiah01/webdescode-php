@@ -15,7 +15,7 @@ padding: 0;
 text-decoration: none;
 }
 p{
-    font-size: 14px;
+    font-size: 16px;
     line-height: 150%;
     padding-bottom: 10px;
 }
@@ -273,7 +273,6 @@ header{
                 }
             }
             .post_wrapper.single_postWP{
-                display: block;
                     //Related Post Content
                     .related_post_wp{
                         width: 100%;
@@ -407,7 +406,8 @@ header{
     }
 }
 //page CSS Code
-.post_wrapper.itpage {
+.main_article_post .web_post_wrapper .web_post_inner .post_wrapper.single_postWP,
+.main_article_post .web_post_wrapper .web_post_inner .post_wrapper.itpage{
     display: block !important;
     border: 1px solid transparent;
 }
@@ -906,7 +906,6 @@ p.comment-form-comment {
             figure{
                 width: 100%;
                 height: auto;
-                display: flex;
                 justify-content: center;
                 a{
                     img{
@@ -1034,3 +1033,79 @@ p.comment-form-comment {
 
     }
 }
+/* 
+Contact Page
+*/
+.contact_wrapper {
+    width: 100%;
+    .contact_inner{
+        padding: 8px;
+        max-width: 100%;
+        width: 650px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0px 0px 40px rgba(29, 58, 83, 0.1);
+        margin-top: 1em;
+        margin-bottom: 1em;
+        p{
+            label{
+                margin-top: 1em;
+            }
+        }
+        input[type="email"],
+        input[type="text"],
+        textarea{
+            max-width: 100%;
+            width: 100%;
+            padding: 1rem 0.5rem;
+        }
+        input[type="email"],
+        input[type="text"]{
+            height: calc(2rem + 2px);
+            min-height: calc(2rem + 2px);
+            
+        }
+        input[type="submit"]{
+            background-color: $a_color;
+            color: #fff;
+            font-size: 16px;
+            padding: 4px 8px;
+            border: none;
+        }
+    }
+  }
+  .card_wrapper{
+    padding: 8px;
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1em;
+    .card_body{
+        border: 1px solid #ddd;
+        padding: 8px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 40px rgba(29, 58, 83, 0.1);
+        i{
+            color: #090;
+        }
+        h3{
+            margin-top: 0.5em;
+            border-bottom: 1px solid rgba(155, 155, 155, 0.15);
+            display: inline-block;
+            padding-bottom: 2px;
+        }
+        .bd{
+            img{
+                width: 16px;
+            }
+            p{
+                display: inline-block;
+            }
+        }
+    }
+  }
+  @media screen and (max-width: 345px){
+    .card_wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+  }
