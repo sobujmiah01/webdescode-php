@@ -10,6 +10,9 @@
     <?php wp_head();?>
 </head>
 <body <?php body_class();?>>
+    <?php
+		wp_body_open();
+	?>
     <header>
         <div class="header_wrapper">
             <div class="header_top">
