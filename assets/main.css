@@ -249,6 +249,8 @@ header .header_wrapper .Header_main_menu .search_and_rs .search_aria input[type=
 .main_article_post .web_post_wrapper .web_post_inner .post_wrapper.single_postWP .related_post_wp {
   width: 100%;
   box-sizing: border-box;
+  padding-top: 1em;
+  border-top: rgba(155, 155, 155, 0.15);
 }
 .main_article_post .web_post_wrapper .web_post_inner .post_wrapper.single_postWP .related_post_wp .related-posts {
   max-width: 100%;

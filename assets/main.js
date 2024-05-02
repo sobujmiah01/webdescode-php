@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     preformattedTextList.forEach(function (preformattedText) {
         var copyButton = document.createElement('button');
-        copyButton.textContent = 'Copy Text';
+        copyButton.textContent = 'Copy Code';
         copyButton.className = 'copy-button';
         copyButton.addEventListener('click', function () {
             var textArea = document.createElement("textarea");
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            alert('Text copied to clipboard!');
+            alert('Code copied to clipboard!');
         });
 
         preformattedText.insertAdjacentElement('beforebegin', copyButton);
