@@ -786,7 +786,7 @@ p.comment-form-comment {
   padding: 0.8em 0.1em;
 }
 
-.copy-button {
+button.copy-button {
   padding: 5px 10px;
   background-color: #000000;
   color: #fff;
@@ -796,7 +796,7 @@ p.comment-form-comment {
   transition: 0.3s ease-in;
 }
 
-.copy-button:hover {
+button.copy-button:hover {
   background-color: #0070f0;
 }
 
@@ -1070,4 +1070,7 @@ Contact Page
   .card_wrapper {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
+}
+p.wp-block-tag-cloud a {
+  font-size: 16px !important;
 }/*# sourceMappingURL=main.css.map */
