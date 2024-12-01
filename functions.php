@@ -27,6 +27,10 @@ function enqueue_google_fonts() {
     );    
 }
 add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
+function enqueue_fontawesome() {
+    wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+}
+add_action('wp_enqueue_scripts', 'enqueue_fontawesome');
 
 /**
  * Theme setup for custom logo.
@@ -89,24 +93,22 @@ function webdescode_customize_register($wp_customize) {
     }
 }
 add_action('customize_register', 'webdescode_customize_register');
-// Replaces the excerpt "Read More" text by a link
+// Replaces the excerpt "Read More" text with a link
 function new_excerpt_more($more) {
     global $post;
-    return '<a class="moretag" href="'. get_permalink($post->ID) . '"> Read more...</a>';
+    // Add "Read more..." link only on archive pages, not on single posts
+    if (!is_single()) {
+        return '<a class="moretag" href="' . esc_url(get_permalink($post->ID)) . '"> Read more...</a>';
+    }
+    return '';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
 // Setting custom excerpt length
 function custom_excerpt_length($length) {
-    return 35; // Change this number to the desired length of words
+    return 35; // Set desired length of excerpt in words
 }
 add_filter('excerpt_length', 'custom_excerpt_length', 999);
-
-// Applying custom excerpt length
-function apply_custom_excerpt_length() {
-    add_filter('excerpt_length', 'custom_excerpt_length');
-}
-add_action('after_setup_theme', 'apply_custom_excerpt_length');
 // Function to register widget areas
 function webdescode_register_widget_areas() {
     $widget_areas = array(

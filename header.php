@@ -2,11 +2,20 @@
 <html <?php language_attributes();?>>
 <head>
     <meta charset="<?php bloginfo('charset');?>">
-    <meta name="description" content="Discover the latest in web design, development, and SEO strategies. Explore responsive design, UX, content strategy, and stay updated on web development best practices. Your comprehensive resource for all things web solutions and creative design">
-    <meta name="keywords" content="website design, development, theme design development, SEO, digital marketing, web development, responsive design, user experience, online presence, content strategy, search engine optimization, social media marketing, e-commerce solutions, mobile-friendly websites, website maintenance, website security, graphic design, branding, online advertising, website analytics, website performance, website optimization, creative web solutions, internet marketing, website usability, website accessibility, website architecture, CMS integration, website hosting, website trends, website best practices, tutorials, coding">
-    <meta name="author" content="webdescode">
+    <meta name="description" content="<?php echo is_single() || is_page() ? get_the_excerpt() : bloginfo('description'); ?>">
+    <meta name="keywords" content="<?php
+        if (is_single()) {
+            $post_tags = wp_get_post_tags(get_the_ID(), array('fields' => 'names'));
+            echo implode(', ', $post_tags);
+        } elseif (is_page()) {
+            echo 'Your default page keywords here';
+        } else {
+            echo 'website design, development, theme design development, SEO, digital marketing';
+        }
+    ?>">
+    <meta name="author" content="<?php bloginfo('name'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php if (is_single() || is_page()) { wp_title('',true); } elseif(is_front_page()) { bloginfo('description'); } else { bloginfo('description'); } ?> | <?php bloginfo('name');?></title>
+    <title><?php wp_title('|', true, 'right'); ?></title>
     <?php wp_head();?>
 </head>
 <body <?php body_class();?>>
@@ -46,7 +55,6 @@
                             'theme_location' => 'main_menu',
                             'container' => 'nav',
                             'container_class'=>'main_navigation',
-                            /* 'menu_class' => 'main_navigation', */
                         ));
                         ?>
                     </div>
@@ -56,6 +64,7 @@
                             <div class="search_aria">
                                 <div class="wp-rs">
                                 <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    <label for="search" class="screen-reader-text">Search:</label>
                                     <input type="search" name="s" id="search" placeholder="search tutorials" value="<?php echo get_search_query(); ?>">
                                 </div>
                             </div>

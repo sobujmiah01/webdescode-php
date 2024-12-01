@@ -185,6 +185,17 @@ header{
                         width: 240px;
                         border-bottom: 1px solid #006ff3;
                     }
+                    .screen-reader-text {
+                        position: absolute;
+                        width: 1px;
+                        height: 1px;
+                        padding: 0;
+                        margin: -1px;
+                        overflow: hidden;
+                        clip: rect(0, 0, 0, 0);
+                        white-space: nowrap; /* Prevent text wrapping */
+                        border: 0;
+                    }
                 }
             }
         }
@@ -528,7 +539,7 @@ textarea{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(45deg, #ffd8d8, #838fa5, #9eacc5, #025177);
+    background: linear-gradient(45deg, #e1ebf3, #7998d1, #3d68b4, #118ec9);
     animation: gradientAnimation 15s ease infinite;
 }
 @keyframes gradientAnimation {

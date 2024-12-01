@@ -1,9 +1,14 @@
 <?php
 if (have_posts()) {
-    if (get_post_type() == 'services') {
-        get_template_part('single-services');
-    } else {
-        get_template_part('single-blog');
+    $post_type = get_post_type();
+    switch ($post_type) {
+        case 'services':
+            get_template_part('single-services');
+            break;
+        case 'post':
+        default:
+            get_template_part('single-blog');
+            break;
     }
 }
 ?>

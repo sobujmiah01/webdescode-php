@@ -7,16 +7,16 @@ The `webdescode-php` theme is a versatile and customizable WordPress theme desig
 ## Key Features
 
 - **Custom Styles and Scripts:** Enqueue custom stylesheets, scripts, and Font Awesome for enhanced design and functionality.
-- **Custom Logo Support:** Incorporate a custom logo effortlessly with flexible dimensions and settings.
-- **Navigation Menus:** Easily manage multiple navigation menus (header, main, footer) for better site navigation.
-- **Customization Options:** Personalize your site with options for social media links and website slogans.
-- **Excerpt Customization:** Modify excerpt lengths and styling to improve content presentation.
-- **Widgets and Sidebars:** Utilize custom widgets and sidebars for enhanced content layout and organization.
+- **Custom Logo Support:** Easily incorporate a custom logo with flexible dimensions and settings.
+- **Navigation Menus:** Manage multiple navigation menus (header, main, footer) for better site navigation.
+- **Customization Options:** Personalize your site with options for social media links, website slogans, and more.
+- **Excerpt Customization:** Modify the length and styling of excerpts to improve content presentation.
+- **Widgets and Sidebars:** Utilize custom widgets and sidebars to enhance content layout and organization.
 - **Pagination Functionality:** Implement custom pagination for smoother navigation through content.
 - **Custom Post Type - Services:** Introduce a custom post type 'Services' to highlight specific content types.
-- **Related Post Functionality:** Display related posts based on categories, offering users more content engagement.
-- **Custom copy clipborad:** No need to use copy clipborad plugin.
-- **Highlight code :** when you want to show any code for visitor.
+- **Related Post Functionality:** Display related posts based on categories for better user engagement.
+- **Code Highlighting:** Highlight code snippets with a built-in solution for code display and styling.
+- **Custom Copy Clipboard:** No need for an external clipboard plugin; we have added a custom clipboard feature for easy copying.
 
 ## Usage
 
