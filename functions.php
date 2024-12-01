@@ -107,26 +107,35 @@ function apply_custom_excerpt_length() {
     add_filter('excerpt_length', 'custom_excerpt_length');
 }
 add_action('after_setup_theme', 'apply_custom_excerpt_length');
-// Registering sidebar widgets
-function ourWidgetInit(){
-    register_sidebar(array(
-        'name' => 'Primary Sidebar',
-        'id' => 'sidebar',
-        'before_widget' => '<div class="sider_bar">',
-        'after_widget' => '</div>',
-        'before_title' => '<h2 class="wid_heading">',
-        'after_title' => '</h2>',
-    ));
-    register_sidebar(array(
-        'name' => 'Footer widget',
-        'id' => 'footer_top',
-        'before_widget' => '<article class="footer_top">',
-        'after_widget' => '</article>',
-        'before_title' => '<h2 class="wid_heading">',
-        'after_title' => '</h2>',
-    ));
+// Function to register widget areas
+function webdescode_register_widget_areas() {
+    $widget_areas = array(
+        array(
+            'name'          => __('Primary Sidebar', 'webdescode'),
+            'id'            => 'sidebar',
+            'description'   => __('Widgets added here will appear in the primary sidebar.', 'webdescode'),
+            'before_widget' => '<div id="%1$s" class="widget %2$s sider_bar">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2 class="widget-title wid_heading">',
+            'after_title'   => '</h2>',
+        ),
+        array(
+            'name'          => __('Footer Top Widget', 'webdescode'),
+            'id'            => 'footer_top',
+            'description'   => __('Widgets added here will appear in the footer top section.', 'webdescode'),
+            'before_widget' => '<article id="%1$s" class="widget %2$s footer_top">',
+            'after_widget'  => '</article>',
+            'before_title'  => '<h2 class="widget-title wid_heading">',
+            'after_title'   => '</h2>',
+        ),
+    );
+
+    foreach ($widget_areas as $widget_area) {
+        register_sidebar($widget_area);
+    }
 }
-add_action('widgets_init' , 'ourWidgetInit');
+add_action('widgets_init', 'webdescode_register_widget_areas');
+
 // Pagination function
 function custom_pagination($pages = '', $range = 4){
     $showitems = ($range * 2) + 1;
@@ -252,3 +261,15 @@ function example_cats_related_post($heading = 'Related Posts') {
         wp_reset_postdata();
     endif;
 }
+function custom_remove_block_styles() {
+    if (!is_admin()) { // Ensure this runs only on the front-end
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('wp-block-library-theme');
+        
+        // Remove WooCommerce block CSS only if WooCommerce is installed
+        if (class_exists('WooCommerce')) {
+            wp_dequeue_style('wc-block-style');
+        }
+    }
+}
+add_action('wp_enqueue_scripts', 'custom_remove_block_styles', 100);

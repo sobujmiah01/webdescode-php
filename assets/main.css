@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-  font-display: swap;
 }
 
 img {
@@ -500,8 +499,7 @@ textarea {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(45deg, #000, #474747, #474747, #025177);
-  background-size: 400% 400%;
+  background: linear-gradient(45deg, #ffd8d8, #838fa5, #9eacc5, #025177);
   animation: gradientAnimation 15s ease infinite;
 }
 
@@ -530,7 +528,6 @@ textarea {
 
 .error-content h1 {
   font-size: 3em;
-  margin-bottom: 20px;
 }
 
 .error-content p {
@@ -565,6 +562,11 @@ textarea {
 .error-content a {
   color: #0073aa;
   text-decoration: underline;
+}
+
+.error-404 {
+  text-align: center;
+  padding: 44px;
 }
 
 .comments-area {
