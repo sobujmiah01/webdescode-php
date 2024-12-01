@@ -1,7 +1,7 @@
 <?php
 function enqueue_prism() {
     wp_enqueue_style('prism', get_template_directory_uri() . '/prism/prism.css', '1.0.2', 'all');
-    wp_enqueue_script('prism', get_template_directory_uri() . '/prism/prism.js', array(), '1.0.2', true);
+    wp_enqueue_script('prism', get_template_directory_uri() . '/prism/prism.js', array('jquery'), '1.0.2', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_prism');
 /**
@@ -21,24 +21,17 @@ function enqueue_google_fonts() {
     // Enqueue Google Fonts
     wp_enqueue_style(
         'google-fonts',
-        'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'
-    );
-
-    // Fallback font included within the same style handle
-    wp_style_add_data('google-fonts', 'before', '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>');
-    wp_enqueue_style(
-        'google-fonts', // Use the same handle as above
-        'https://fonts.googleapis.com/css?family=Roboto:400,500,700', // Fallback font
-        array(), // No dependency needed for the fallback font
-        null // Version number, set to null to prevent conflicts
-    );
+        'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap',
+        array(),
+        null
+    );    
 }
 add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
 
 /**
  * Theme setup for custom logo.
  */
-function themename_custom_logo_setup() {
+function webdescode_custom_logo_setup() {
     $defaults = array(
         'height'               => 100,
         'width'                => 400,
@@ -49,7 +42,7 @@ function themename_custom_logo_setup() {
     );
     add_theme_support( 'custom-logo', $defaults );
 }
-add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
+add_action( 'after_setup_theme', 'webdescode_custom_logo_setup' );
 /**
  * Register navigation menus.
  */
@@ -191,11 +184,26 @@ function create_custom_post_type() {
             'labels' => array(
                 'name' => __('Services'),
                 'singular_name' => __('Service'),
+                'add_new_item' => __('Add New Service'),
+                'edit_item' => __('Edit Service'),
+                'new_item' => __('New Service'),
+                'view_item' => __('View Service'),
+                'all_items' => __('All Services'),
+                'search_items' => __('Search Services'),
+                'not_found' => __('No services found'),
+                'not_found_in_trash' => __('No services found in Trash'),
+                'parent_item_colon' => __('Parent Service:'),
             ),
             'public' => true,
             'has_archive' => true,
             'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
             'taxonomies' => array('category', 'post_tag'), // Add support for categories and tags
+            'rewrite' => array(
+                'slug' => 'services', // URL structure customization
+                'with_front' => false, // Avoid adding "blog" or "home" in the URL
+            ),
+            'menu_icon' => 'dashicons-businessperson', // Optional: Adding a custom icon to the admin menu
+            'show_in_rest' => true, // Enable Gutenberg editor support
         )
     );
 }
