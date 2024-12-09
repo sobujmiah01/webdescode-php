@@ -1014,76 +1014,79 @@ button.copy-button:hover {
 /* 
 Contact Page
 */
-.contact_wrapper {
-  width: 100%;
-}
-.contact_wrapper .contact_inner {
-  padding: 8px;
-  max-width: 100%;
-  width: 650px;
-  margin: 0 auto;
-  background-color: #fff;
-  box-shadow: 0px 0px 40px rgba(29, 58, 83, 0.1);
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-.contact_wrapper .contact_inner p label {
-  margin-top: 1em;
-}
-.contact_wrapper .contact_inner input[type=email],
-.contact_wrapper .contact_inner input[type=text],
-.contact_wrapper .contact_inner textarea {
-  max-width: 100%;
-  width: 100%;
-  padding: 1rem 0.5rem;
-}
-.contact_wrapper .contact_inner input[type=email],
-.contact_wrapper .contact_inner input[type=text] {
-  height: calc(2rem + 2px);
-  min-height: calc(2rem + 2px);
-}
-.contact_wrapper .contact_inner input[type=submit] {
-  background-color: #000;
-  color: #fff;
-  font-size: 16px;
-  padding: 4px 8px;
-  border: none;
-}
+/* .contact_wrapper {
+    width: 100%;
+    .contact_inner{
+        padding: 8px;
+        max-width: 100%;
+        width: 650px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0px 0px 40px rgba(29, 58, 83, 0.1);
+        margin-top: 1em;
+        margin-bottom: 1em;
+        p{
+            label{
+                margin-top: 1em;
+            }
+        }
+        input[type="email"],
+        input[type="text"],
+        textarea{
+            max-width: 100%;
+            width: 100%;
+            padding: 1rem 0.5rem;
+        }
+        input[type="email"],
+        input[type="text"]{
+            height: calc(2rem + 2px);
+            min-height: calc(2rem + 2px);
 
-.card_wrapper {
-  padding: 8px;
-  margin-top: 1em;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 1em;
-}
-.card_wrapper .card_body {
-  border: 1px solid #ddd;
-  padding: 8px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 40px rgba(29, 58, 83, 0.1);
-}
-.card_wrapper .card_body i {
-  color: #090;
-}
-.card_wrapper .card_body h3 {
-  margin-top: 0.5em;
-  border-bottom: 1px solid rgba(155, 155, 155, 0.15);
-  display: inline-block;
-  padding-bottom: 2px;
-}
-.card_wrapper .card_body .bd img {
-  width: 16px;
-}
-.card_wrapper .card_body .bd p {
-  display: inline-block;
-}
-
-@media screen and (max-width: 345px) {
-  .card_wrapper {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+        input[type="submit"]{
+            background-color: $a_color;
+            color: #fff;
+            font-size: 16px;
+            padding: 4px 8px;
+            border: none;
+        }
+    }
   }
-}
-p.wp-block-tag-cloud a {
-  font-size: 16px !important;
-}/*# sourceMappingURL=main.css.map */
+  .card_wrapper{
+    padding: 8px;
+    margin-top: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1em;
+    .card_body{
+        border: 1px solid #ddd;
+        padding: 8px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 40px rgba(29, 58, 83, 0.1);
+        i{
+            color: #090;
+        }
+        h3{
+            margin-top: 0.5em;
+            border-bottom: 1px solid rgba(155, 155, 155, 0.15);
+            display: inline-block;
+            padding-bottom: 2px;
+        }
+        .bd{
+            img{
+                width: 16px;
+            }
+            p{
+                display: inline-block;
+            }
+        }
+    }
+  }
+  @media screen and (max-width: 345px){
+    .card_wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+  }
+  p.wp-block-tag-cloud a {
+    font-size: 16px !important;
+} *//*# sourceMappingURL=main.css.map */
