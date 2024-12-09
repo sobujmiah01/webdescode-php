@@ -208,7 +208,7 @@ function create_custom_post_type() {
             'public' => true,
             'has_archive' => true,
             'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'comments'),
-            'taxonomies' => array('category', 'post_tag'), // Add support for categories and tags
+            'taxonomies' => array('post_tag'), // Add support for categories and tags
             'rewrite' => array(
                 'slug' => 'services', // URL structure customization
                 'with_front' => false, // Avoid adding "blog" or "home" in the URL
