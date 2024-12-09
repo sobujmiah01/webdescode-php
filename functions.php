@@ -1,7 +1,7 @@
 <?php
 function custom_theme_update_check($transient) {
     $theme_slug = 'webdescode-php'; // Match your theme slug
-    $remote_url = 'https://raw.githubusercontent.com/sobujmiah01/webdescode-php/master/theme-update-info.json'; // JSON file URL
+    $remote_url = 'https://raw.githubusercontent.com/sobujmiah01/webdescode-php/master/main/theme-update-info.json'; // JSON file URL
 
     if (empty($transient->checked)) {
         return $transient;
