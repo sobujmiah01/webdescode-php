@@ -1,24 +1,19 @@
 <?php
 function custom_theme_update_check($transient) {
-    $theme_slug = 'webdescode-php'; // Replace with your theme's slug
-    $remote_url = 'https://raw.githubusercontent.com/sobujmiah01/webdescode-php/main/theme-update-info.json'; // URL to your JSON file
+    $theme_slug = 'webdescode-php'; // Match your theme slug
+    $remote_url = 'https://raw.githubusercontent.com/sobujmiah01/webdescode-php/master/theme-update-info.json'; // JSON file URL
 
-    // Return early if no themes need checking
     if (empty($transient->checked)) {
         return $transient;
     }
 
-    // Fetch update data
     $response = wp_remote_get($remote_url);
 
-    // Ensure the response is valid
     if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) == 200) {
         $theme_info = json_decode(wp_remote_retrieve_body($response));
-        if (
-            isset($theme_info->new_version) &&
-            version_compare(wp_get_theme($theme_slug)->get('Version'), $theme_info->new_version, '<')
-        ) {
-            // Add update details to the transient
+        error_log('Theme Update Response: ' . print_r($theme_info, true)); // Debugging output
+
+        if (isset($theme_info->new_version) && version_compare(wp_get_theme()->get('Version'), $theme_info->new_version, '<')) {
             $transient->response[$theme_slug] = array(
                 'theme'       => $theme_slug,
                 'new_version' => $theme_info->new_version,
@@ -26,6 +21,8 @@ function custom_theme_update_check($transient) {
                 'package'     => $theme_info->package,
             );
         }
+    } else {
+        error_log('Theme Update Check Failed: ' . wp_remote_retrieve_response_code($response));
     }
 
     return $transient;
