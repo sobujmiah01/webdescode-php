@@ -6,22 +6,8 @@
         <p><?php esc_html_e("Let's get you back on track:", 'webdescode'); ?></p>
         
         <!-- Search Form -->
-        <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
-            <label>
-                <span class="screen-reader-text"><?php esc_html_e('Search for:', 'webdescode'); ?></span>
-                <input 
-                    type="search" 
-                    class="search-field" 
-                    placeholder="<?php esc_attr_e('Search...', 'webdescode'); ?>" 
-                    value="<?php echo esc_attr(get_search_query()); ?>" 
-                    name="s" 
-                />
-            </label>
-            <button type="submit" class="search-submit">
-                <?php esc_html_e('Search', 'webdescode'); ?>
-            </button>
-        </form>
-        
+        <?php get_search_form(); ?>
+
         <!-- Call to Action Links -->
         <p>
             <?php esc_html_e('You can also navigate back to the', 'webdescode'); ?>
