@@ -1,7 +1,40 @@
 <?php
+function custom_theme_update_check($transient) {
+    $theme_slug = 'webdescode-php'; // Replace with your theme's slug
+    $remote_url = 'https://raw.githubusercontent.com/sobujmiah01/webdescode-php/main/theme-update-info.json'; // URL to your JSON file
+
+    // Return early if no themes need checking
+    if (empty($transient->checked)) {
+        return $transient;
+    }
+
+    // Fetch update data
+    $response = wp_remote_get($remote_url);
+
+    // Ensure the response is valid
+    if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) == 200) {
+        $theme_info = json_decode(wp_remote_retrieve_body($response));
+        if (
+            isset($theme_info->new_version) &&
+            version_compare(wp_get_theme($theme_slug)->get('Version'), $theme_info->new_version, '<')
+        ) {
+            // Add update details to the transient
+            $transient->response[$theme_slug] = array(
+                'theme'       => $theme_slug,
+                'new_version' => $theme_info->new_version,
+                'url'         => $theme_info->url,
+                'package'     => $theme_info->package,
+            );
+        }
+    }
+
+    return $transient;
+}
+add_filter('site_transient_update_themes', 'custom_theme_update_check');
+
 function enqueue_prism() {
-    wp_enqueue_style('prism', get_template_directory_uri() . '/prism/prism.css', '1.0.2', 'all');
-    wp_enqueue_script('prism', get_template_directory_uri() . '/prism/prism.js', array('jquery'), '1.0.2', true);
+    wp_enqueue_style('prism', get_template_directory_uri() . '/prism/prism.css', '1.1', 'all');
+    wp_enqueue_script('prism', get_template_directory_uri() . '/prism/prism.js', array('jquery'), '1.1', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_prism');
 /**
@@ -9,9 +42,9 @@ add_action('wp_enqueue_scripts', 'enqueue_prism');
  */
 function enqueue_theme_styles_scripts() {
     // Enqueue main stylesheet
-    wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/main.css', array(), '1.0.2', 'all');
+    wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/main.css', array(), '1.1', 'all');
     // Enqueue custom script
-    wp_enqueue_script('app-script', get_template_directory_uri() . '/assets/main.js', array('jquery'), '1.0.2', true);
+    wp_enqueue_script('app-script', get_template_directory_uri() . '/assets/main.js', array('jquery'), '1.1', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_theme_styles_scripts');
 /**
