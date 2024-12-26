@@ -55,7 +55,7 @@ $border_color:rgba(155,155,155,0.15);
         margin-right: 8px;
     }
 }
-header{
+header.web_header{
     width: 100%;
     max-width: 100vw;
     background-color: #f5f5f5;
@@ -149,57 +149,104 @@ header{
                         }
                     }
                 }
-            }
-            .search_and_rs{
-                display: grid;
-                grid-template-columns: auto auto;
-                grid-gap: 0.8em;
-                align-items: center;
-                .icon_menu{
-                    display: none;
-                }
-                .search_aria{
-                    button{
-                        line-height: 33px;
+                .search_and_rs{
+                    form.search-form {
+                        display: flex;
+                        align-items: center;
+                        position: relative;
+                        label{
+                            display: none;
+                        }
+                        button[type="submit"]:focus {
+                            background-color: transparent;
+                            border: transparent;
+                        }
+                        button[type="submit"]:focus-within {
                         background-color: transparent;
                         border: transparent;
+                        }
+                        input{
+                            height: 34px;
+                            width: 100px;
+                            padding-left: 2px;
+                        }
+                        input[type="search"]{
+                            background-color: #f5f5f5;
+                            transition: 0.5s;
+                        }
+                        input[type="search"]:focus{
+                            width: 240px;
+                            border-bottom: 1px solid #006ff3;
+                        }
+                        .screen-reader-text {
+                            position: absolute;
+                            width: 1px;
+                            height: 1px;
+                            padding: 0;
+                            margin: -1px;
+                            overflow: hidden;
+                            clip: rect(0, 0, 0, 0);
+                            white-space: nowrap; /* Prevent text wrapping */
+                            border: 0;
+                        }
+                        button.search-submit{
+                            width: auto;
+                            border: transparent;
+                            background-color: transparent;
+                            position: absolute;
+                            margin-top: 0px;
+                            right: 0px;
+                            svg.svg-inline--fa.fa-magnifying-glass {
+                                color: #000;
+                            }
+                        }
                     }
-                    button[type="submit"]:focus {
-                        background-color: transparent;
-                        border: transparent;
-                    }
-                    button[type="submit"]:focus-within {
-                    background-color: transparent;
-                    border: transparent;
-                    }
-                    input{
-                        height: 34px;
-                        width: 100px;
-                        padding-left: 2px;
-                    }
-                    input[type="search"]{
-                        background-color: #f5f5f5;
-                        transition: 0.5s;
-                    }
-                    input[type="search"]:focus{
-                        width: 240px;
-                        border-bottom: 1px solid #006ff3;
-                    }
-                    .screen-reader-text {
-                        position: absolute;
-                        width: 1px;
-                        height: 1px;
-                        padding: 0;
-                        margin: -1px;
-                        overflow: hidden;
-                        clip: rect(0, 0, 0, 0);
-                        white-space: nowrap; /* Prevent text wrapping */
-                        border: 0;
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    grid-gap: 0.8em;
+                    align-items: center;
+                    .icon_menu{
+                        width: 25px;
+                        max-width: 25px;
+                        .fa-bars{
+                            display: none;
+                            font-size: 24px;
+                        }
+                        .fa-xmark{
+                            display: none;
+                            font-size: 24px;
+                        }
                     }
                 }
             }
+            
         }
       }
+}
+/* Search responsive & Header responsive */
+@media screen and (max-width: 580px){
+    header.web_header .header_wrapper .Header_main_menu .menu_wrapper{
+        .logo_menu_wrapper a.web_logoL {
+            width: 160px;
+            img{
+                width: 160px;
+                max-width: 160px;
+                height: 30px;
+            }
+        }
+        .search_and_rs form.search-form input[type="search"]:focus{
+            width: 160px;
+        }
+
+    } 
+}
+@media screen and (max-width: 490px){
+    #search-field:focus{
+        position: absolute;
+        top: 20px;
+        right: 0px;
+        width: 70vw;
+    }
 }
 .main_article_post{
     box-sizing: border-box;
@@ -268,7 +315,7 @@ header{
                     }
                 }
             }
-            .post_wrapper.single_postWP{
+            .single_postWP{
                     //Related Post Content
                     .related_post_wp{
                         width: 100%;
@@ -286,12 +333,11 @@ header{
                                 li{
                                     list-style-type: none;
                                     border: 1px solid $border_color;
-                                    border-radius: 4%;
+                                    border-radius: 4px;
                                     a{
                                         padding: 0.2em;
                                         text-decoration: none;
                                         color: $a_color;
-                                        display: block;
                                         figure{
                                             width: 100%;
                                             max-width: 100%;
@@ -375,7 +421,7 @@ header{
                     list-style-type: none;
                     margin: 0em 0.1em;
                     padding: 0em 0.2em;
-                    border-left: 1px solid #ddd;
+                    border-right: 1px solid #ddd;
                     a{
                         color: #fff;
                         text-decoration: none;
@@ -387,6 +433,9 @@ header{
                 }
                 li.pagination-item.active{
                     color: red;
+                }
+                li.pagination-item:last-of-type{
+                    border-right: 1px solid transparent;
                 }
                 li{
                     line-height: 180%;
@@ -644,6 +693,7 @@ textarea{
     border: none;
     padding: 8px 10px;
     cursor: pointer;
+    border-radius: 8px;
 }
 .comment-form input[type="submit"]:hover {
     background-color: $ah_color;
@@ -660,12 +710,20 @@ textarea{
 /* Comment Body */
 .comment_cstm {
     margin-top: 20px;
+    .comment-list{
+        .comment-body {
+            border-bottom: 1px solid #eee;
+            padding: 10px;
+            display: inline-block;
+            .comment-meta{
+                background-color: #fff;
+                padding: 3px;
+                border-radius: 3px;
+            }
+        }
+    }
 }
-.comment-body {
-    border-bottom: 1px solid #eee;
-    padding: 10px;
-    display: inline-block;
-}
+
 .comment-body img.avatar {
     border-radius: 50%;
     margin-right: 10px;
@@ -844,7 +902,7 @@ button.copy-button:hover {
     }
 }
 @media screen and (max-width: 935px){
-    header{
+    header.web_header{
         .header_wrapper{
             .Header_main_menu{
                 position: relative;
@@ -853,7 +911,7 @@ button.copy-button:hover {
                         nav.main_navigation{
                             position: absolute;
                             background-color: #fff;
-                            top: 50px;
+                            top: 54px;
                             padding: 8px 0px;
                             left: 0;
                             ul{
@@ -864,20 +922,15 @@ button.copy-button:hover {
                             }
                         }
                     }
-                }
-                .search_and_rs{
-                    .icon_menu{
-                        display: block;
-                        font-size: 20px;
-                    }
-                    .search_aria{
+                    .search_and_rs{
                         button{
-                            right: 26px;
+                            right: 2px;
                         }
                     }
                 }
+                
             }
-            .Header_main_menu .search_and_rs .search_aria input[type="search"]:focus{
+            .Header_main_menu .search_and_rs  input[type="search"]:focus{
                 width: 150px;
             }
         }
@@ -932,7 +985,7 @@ button.copy-button:hover {
         font-size: 16px;
     }
     footer .footer_inner .web_credit .footer_menu nav .menu li a,
-    header .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation ul li a,
+    header.web_header .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation ul li a,
     .main_article_post .web_post_wrapper .pagination_section .pagination{
         font-size: 15px;
     }
@@ -952,7 +1005,7 @@ button.copy-button:hover {
     }
 }
 @media screen and (max-width: 550px){
-    header .Header_main_menu {
+    header.web_header .Header_main_menu {
         position: relative;
         .search_and_rs{
             .search-form{
@@ -992,12 +1045,12 @@ button.copy-button:hover {
       }
 }
 @media screen and (max-width: 350px){
-    header .header_wrapper .Header_main_menu{
+    header.web_header .header_wrapper .Header_main_menu{
         padding: 2px 8px 2px 2px;
     }
 }
 @media screen and (max-width: 315px){
-    header .header_wrapper .Header_main_menu{
+    header.web_header .header_wrapper .Header_main_menu{
         padding: 2px 8px 2px 0px;
         .search_and_rs{
             grid-gap: 0.1em;

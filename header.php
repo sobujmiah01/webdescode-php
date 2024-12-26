@@ -20,8 +20,8 @@
 </head>
 <body <?php body_class();?>>
     <?php wp_body_open(); ?>
-    <header>
-        <div class="header_wrapper">
+    <header class="web_header">
+        <div class="header_wrapper header-content">
             <div class="header_top">
                 <!-- Top Header Menu -->
                 <nav>

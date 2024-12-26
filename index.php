@@ -4,7 +4,9 @@
             <div class="web_post_inner">
                 <?php get_template_part('loop_post');?>
             </div>
-            <?php get_template_part('custom_pagination');?>
+            <div class="pagination_section">
+                <?php custom_pagination()?>   
+            </div>
         </div>
         <?php get_sidebar();?>
     </main>

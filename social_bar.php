@@ -1,8 +1,8 @@
 <ul>
     <?php
     $social_icons = array(
-        'facebook' => 'fa-facebook-f',
-        'twitter' => 'fa-x-twitter',
+        'facebook' => 'fa-facebook',
+        'twitter' => 'fa-twitter',
         'instagram' => 'fa-instagram',
         'youtube' => 'fa-youtube',
         'linkedin' => 'fa-linkedin-in',

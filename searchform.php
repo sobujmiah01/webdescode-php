@@ -11,6 +11,8 @@
         name="s" 
     />
     <button type="submit" class="search-submit">
-        <?php echo esc_html_x('Search', 'submit button', 'webdescode'); ?>
+    <i class="fas fa-search" aria-hidden="true"></i>
+    <span class="screen-reader-text"><?php echo esc_html_x(' ', 'submit button', 'webdescode'); ?></span>
     </button>
+
 </form>
