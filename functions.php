@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * Webdescode functions and definitions.
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package WordPress
+ * @subpackage Webdescode
+ * @since Webdescode 1.8
+ */
 // Enqueue Prism styles and scripts
 function enqueue_prism() {
     wp_enqueue_style('prism', get_template_directory_uri() . '/prism/prism.css', array(), '1.1', 'all');
@@ -293,4 +301,26 @@ function custom_remove_block_styles() {
 }
 add_action('wp_enqueue_scripts', 'custom_remove_block_styles', 100);
 
-?>
+/**
+ * Register custom block pattern categories for WebDesCode theme.
+ *
+ * @since WebDesCode 1.8
+ */
+
+// Register block pattern categories.
+if ( ! function_exists( 'webdescode_register_block_pattern_categories' ) ) :
+    function webdescode_register_block_pattern_categories() {
+        // Registering the "Layouts" category.
+        register_block_pattern_category(
+            'webdescode-layouts',
+            array(
+                'label'       => __( 'Layouts', 'webdescode' ),
+                'description' => __( 'A collection of layout patterns.', 'webdescode' ),
+            )
+        );
+    }
+endif;
+add_action( 'init', 'webdescode_register_block_pattern_categories' );
+
+// Include the file that registers block patterns.
+require get_template_directory() . '/patterns/two-column-layout.php';

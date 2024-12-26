@@ -14,3 +14,4 @@ function webdescode_register_block_styles() {
     );
 }
 add_action( 'init', 'webdescode_register_block_styles' );
+
