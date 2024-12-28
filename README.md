@@ -6,17 +6,17 @@ The `webdescode-php` theme is a versatile and customizable WordPress theme desig
 
 ## Key Features
 
-- **Custom Styles and Scripts:** Enqueue custom stylesheets, scripts, and Font Awesome for enhanced design and functionality.
-- **Custom Logo Support:** Easily incorporate a custom logo with flexible dimensions and settings.
-- **Navigation Menus:** Manage multiple navigation menus (header, main, footer) for better site navigation.
-- **Customization Options:** Personalize your site with options for social media links, website slogans, and more.
-- **Excerpt Customization:** Modify the length and styling of excerpts to improve content presentation.
-- **Widgets and Sidebars:** Utilize custom widgets and sidebars to enhance content layout and organization.
-- **Pagination Functionality:** Implement custom pagination for smoother navigation through content.
-- **Custom Post Type - Services:** Introduce a custom post type 'Services' to highlight specific content types.
-- **Related Post Functionality:** Display related posts based on categories for better user engagement.
-- **Code Highlighting:** Highlight code snippets with a built-in solution for code display and styling.
-- **Custom Copy Clipboard:** No need for an external clipboard plugin; we have added a custom clipboard feature for easy copying.
+- **Custom Styles and Scripts:** Includes custom stylesheets, scripts, and integrates Font Awesome for enhanced visual appeal and functionality.
+- **Custom Logo Support:** Flexible settings for integrating custom logos with various display options.
+- **Navigation Menus:** Easily configurable navigation menus across header, footer, and sidebar.
+- **Customizable Widgets and Sidebars:** Add widgets for extended site functionality and layout options.
+- **Pagination Support:** Implement smooth pagination for efficient content browsing.
+- **Custom Post Type - Services:** Easily highlight specific services through a custom post type.
+- **Related Posts:** Related posts based on categories for improving user experience and engagement.
+- **Code Snippets Styling:** Built-in syntax highlighting for displaying code snippets with proper styling.
+- **Clipboard Functionality:** Custom clipboard feature integrated for copying content without an additional plugin.
+- **Block Patterns:** Custom block patterns and block categories to streamline content creation.
+- **SEO Optimization:** The theme is designed with SEO best practices in mind to ensure maximum visibility.
 
 ## Usage
 
@@ -25,6 +25,26 @@ To use this theme:
 1. **Download:** Clone or download the repository.
 2. **Installation:** Upload the theme folder to your WordPress installation's `wp-content/themes/` directory.
 3. **Activation:** Log in to your WordPress dashboard, navigate to Appearance > Themes, and activate the `webdescode-php` theme.
+
+## Customization
+
+### Add Custom Logo
+
+You can add your custom logo through the WordPress **Customizer**. Go to **Appearance > Customize > Site Identity** and upload your logo.
+
+### Managing Menus
+
+To manage menus, head to **Appearance > Menus**. Here you can create custom menus for your header, footer, or sidebar.
+
+### Customize Excerpts
+
+Modify the length of your post excerpts by going to **Appearance > Customize > Blog**.
+
+### Widgets and Sidebars
+
+Manage your sidebar and widget areas under **Appearance > Widgets**. The theme offers several widget areas for greater content flexibility.
+
+
 
 ## Contributing
 
@@ -63,11 +83,15 @@ function enqueue_prism() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_prism');
 ```
-or you want developer document website. follow me: 
+## Code Highlighting
+For highlighting code snippets in your posts or pages, you can use the built-in code style feature:
 ```php
 <code class="preformatted-text line-numbers language-js"></code>
 ```
-**no need to copy clipborad plugin**. we are added custom copy clipboard.
+This eliminates the need for external plugins such as PrismJS.
+## Additional Notes
+### Clipboard Feature
+The theme includes a custom clipboard for copying code snippets, eliminating the need for a separate plugin.
 
 ## Breadcrumbs Customization
 

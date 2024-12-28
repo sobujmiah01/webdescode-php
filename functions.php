@@ -54,6 +54,10 @@ require get_template_directory() . '/inc/register_block_style.php';
 
 // Theme setup for various features
 function webdescode_theme_setup() {
+    // Load the theme's text domain for translation
+    load_theme_textdomain( 'webdescode', get_template_directory() . '/languages' );
+    // Add support for accessibility features
+    add_theme_support( 'accessibility-ready' );
     // Add theme support for various features
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -324,3 +328,25 @@ add_action( 'init', 'webdescode_register_block_pattern_categories' );
 
 // Include the file that registers block patterns.
 require get_template_directory() . '/patterns/two-column-layout.php';
+// Add support for custom background.
+if ( ! function_exists( 'webdescode_custom_background_setup' ) ) :
+    /**
+     * Set up the WordPress core custom background feature.
+     *
+     * @since Webdescode 1.8
+     *
+     * @return void
+     */
+    function webdescode_custom_background_setup() {
+        $args = array(
+            'default-color'          => 'ffffff', // Default background color.
+            'default-image'          => '',      // Default background image.
+            'wp-head-callback'       => '_custom_background_cb',
+            'admin-head-callback'    => '',
+            'admin-preview-callback' => '',
+        );
+
+        add_theme_support( 'custom-background', $args );
+    }
+endif;
+add_action( 'after_setup_theme', 'webdescode_custom_background_setup' );

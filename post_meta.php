@@ -1,8 +1,8 @@
 <div class="post-meta">
-    <span class="post-time">
+    <span class="post-author">
         <?php the_author(); ?>
     </span>
-    <span class="post-author">
+    <span class="post-time">
         <?php the_time('m j, Y'); ?>
     </span>
     <span class="post-category">

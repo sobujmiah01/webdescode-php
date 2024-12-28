@@ -35,11 +35,6 @@ li {
   text-decoration: none;
 }
 
-img {
-  width: 100%;
-  height: auto;
-}
-
 .search_heading {
   color: #1266d3;
 }
@@ -1134,4 +1129,179 @@ Contact Page
 }
 p.wp-block-tag-cloud a {
   font-size: 16px !important;
+}
+
+.post-meta {
+  margin-bottom: 0.4em;
+  border-bottom: 1px solid rgba(155, 155, 155, 0.15);
+  display: inline-block;
+}
+
+/* Style for the caption container */
+.wp-caption {
+  max-width: 100%;
+  margin: 1.5em 0;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  padding: 5px;
+}
+
+/* Style for the caption text */
+.wp-caption-text {
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.4;
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+/* Basic styling for sticky posts */
+.sticky {
+  background-color: #f5f5f5; /* Light background color to highlight */
+  border: 2px solid #ddd; /* Subtle border for emphasis */
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+/* Optional: Add a visual indicator for sticky posts */
+.sticky:before {
+  content: "Featured";
+  display: block;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #0073aa; /* WordPress blue */
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  text-align: center;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+/* Ensure proper display in grids or lists */
+.sticky {
+  display: block;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+@media (max-width: 768px) {
+  .sticky {
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+  .sticky:before {
+    font-size: 0.75rem;
+  }
+}
+/* Style for gallery captions */
+.gallery-caption {
+  font-size: 1rem; /* Adjusts font size */
+  color: #555; /* Sets text color */
+  font-style: italic; /* Makes caption text italic */
+  text-align: center; /* Centers the caption text */
+  margin-top: 10px; /* Adds space above the caption */
+  padding: 5px; /* Adds padding inside the caption box */
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+  border-radius: 3px; /* Rounded corners */
+  max-width: 90%; /* Ensures the caption doesn't stretch too wide */
+  margin-left: auto;
+  margin-right: auto; /* Centers the caption */
+}
+
+/* Optional: Add responsiveness to ensure captions look good on mobile */
+@media (max-width: 768px) {
+  .gallery-caption {
+    font-size: 0.875rem; /* Slightly smaller font on mobile */
+    padding: 4px; /* Less padding for mobile */
+  }
+}
+/* Style for images aligned to the left */
+.alignleft {
+  float: left; /* Floats the image to the left */
+  margin-right: 15px; /* Adds space to the right of the image */
+  margin-bottom: 15px; /* Adds space below the image */
+  max-width: 100%; /* Ensures the image is responsive */
+  height: auto; /* Maintains aspect ratio */
+}
+
+/* Style for images aligned to the right */
+.alignright {
+  float: right; /* Floats the image to the right */
+  margin-left: 15px; /* Adds space to the left of the image */
+  margin-bottom: 15px; /* Adds space below the image */
+  max-width: 100%; /* Ensures the image is responsive */
+  height: auto; /* Maintains aspect ratio */
+}
+
+/* Style for images aligned to the center */
+.aligncenter {
+  display: block; /* Makes the image block level */
+  margin-left: auto; /* Centers the image horizontally */
+  margin-right: auto; /* Centers the image horizontally */
+  max-width: 100%; /* Ensures the image is responsive */
+  height: auto; /* Maintains aspect ratio */
+}
+
+/* Optional: Add responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .alignleft, .alignright {
+    float: none; /* Disables floating on smaller screens */
+    display: block; /* Makes the images block level */
+    margin: 10px auto; /* Centers the image on small screens */
+  }
+}
+/* Style for the post author container */
+.bypostauthor {
+  font-size: 1rem; /* Adjust the font size for the author's name */
+  font-weight: bold; /* Makes the author's name bold */
+  color: #333; /* Default text color for the author's name */
+  margin-bottom: 10px; /* Adds space below the author's name */
+  display: flex;
+  align-items: center; /* Vertically aligns the author's name with the avatar (if present) */
+}
+
+/* Style for the author's avatar */
+.bypostauthor .author-avatar {
+  width: 40px; /* Set a fixed width for the avatar */
+  height: 40px; /* Set a fixed height for the avatar */
+  border-radius: 50%; /* Make the avatar circular */
+  margin-right: 10px; /* Adds space between the avatar and the author's name */
+  -o-object-fit: cover;
+     object-fit: cover; /* Ensures the image covers the avatar area without distortion */
+}
+
+/* Style for the author's name link */
+.bypostauthor .author-name {
+  font-size: 1.1rem; /* Slightly larger font size for the author's name */
+  color: #0073aa; /* A blue color for the author's name */
+  text-decoration: none; /* Removes the underline from the author's name */
+}
+
+/* Hover effect for the author's name */
+.bypostauthor .author-name:hover {
+  color: #005177; /* Darker blue on hover */
+  text-decoration: underline; /* Adds an underline on hover */
+}
+
+/* Optional: Style for additional author information (e.g., author bio, website link) */
+.bypostauthor .author-info {
+  font-size: 0.9rem; /* Smaller font size for additional information */
+  color: #666; /* Lighter text color for author details */
+  margin-top: 5px; /* Adds space between the author's name and additional details */
+}
+
+/* Optional: Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .bypostauthor {
+    font-size: 0.9rem; /* Reduces font size on smaller screens */
+  }
+  .bypostauthor .author-avatar {
+    width: 35px; /* Smaller avatar on mobile */
+    height: 35px; /* Smaller avatar on mobile */
+  }
 }/*# sourceMappingURL=main.css.map */
