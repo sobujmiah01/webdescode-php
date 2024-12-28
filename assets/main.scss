@@ -724,6 +724,7 @@ textarea{
     border-radius: 50%;
     margin-right: 10px;
     width: 40px;
+    height: auto;
 }
 cite.fn {
     text-transform: capitalize;
@@ -1175,7 +1176,6 @@ Contact Page
     border: 1px solid #ddd;
     border-radius: 4px;
     background-color: #f9f9f9;
-    padding: 5px;
 }
 
 /* Style for the caption text */
@@ -1229,15 +1229,11 @@ Contact Page
 .gallery-caption {
     font-size: 1rem; /* Adjusts font size */
     color: #555; /* Sets text color */
-    font-style: italic; /* Makes caption text italic */
-    text-align: center; /* Centers the caption text */
     margin-top: 10px; /* Adds space above the caption */
     padding: 5px; /* Adds padding inside the caption box */
     background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
     border-radius: 3px; /* Rounded corners */
-    max-width: 90%; /* Ensures the caption doesn't stretch too wide */
-    margin-left: auto;
-    margin-right: auto; /* Centers the caption */
+    display: inline-block;
 }
 
 /* Optional: Add responsiveness to ensure captions look good on mobile */
@@ -1331,4 +1327,7 @@ Contact Page
         width: 35px; /* Smaller avatar on mobile */
         height: 35px; /* Smaller avatar on mobile */
     }
+}
+.wp-block-button {
+    margin-bottom: 0.8em;
 }
