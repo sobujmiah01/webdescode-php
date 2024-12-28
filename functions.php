@@ -1,43 +1,38 @@
 <?php
-// Enable automatic theme updates from GitHub
-add_filter('pre_set_site_transient_update_themes', 'github_theme_updates', 100, 1);
-function github_theme_updates($data) {
-    // Theme information
-    $theme_slug = get_stylesheet(); // Folder name of the current theme
-    $current_version = wp_get_theme()->get('Version'); // Current version of the theme
-    
-    // GitHub repository details
-    $github_user = 'sobujmiah01'; // Your GitHub username
-    $github_repo = 'webdescode'; // Your repository name
-    
-    // Fetch the latest release information from GitHub API
-    $response = wp_remote_get("https://api.github.com/repos/{$github_user}/{$github_repo}/releases/latest", [
-        'headers' => ['User-Agent' => 'WordPress'],
-    ]);
+add_filter('pre_set_site_transient_update_themes', 'automatic_GitHub_updates', 100, 1);
+function automatic_GitHub_updates($data) {
+    $theme   = get_stylesheet(); // Folder name of the current theme
+    $current = wp_get_theme()->get('Version'); // Current theme version
+    $user    = 'sobujmiah01'; // GitHub username
+    $repo    = 'webdescode'; // Repository name
 
-    // If the API call fails, return the current data
-    if (is_wp_error($response)) return $data;
+    // Construct the GitHub API URL for tags
+    $tags_url = 'https://api.github.com/repos/' . $user . '/' . $repo . '/tags';
 
-    $release_data = json_decode(wp_remote_retrieve_body($response));
+    // Fetch tags from the GitHub API
+    $response = @file_get_contents($tags_url, false,
+        stream_context_create(['http' => ['header' => "User-Agent: " . $user . "\r\n"]])
+    );
+    $tags = @json_decode($response);
 
-    // Verify release data structure
-    if (!isset($release_data->tag_name) || !isset($release_data->assets[0]->browser_download_url)) return $data;
+    if ($tags && is_array($tags) && !empty($tags[0]->name)) {
+        $latest_tag = $tags[0]->name; // Get the latest tag (assuming it's ordered by release)
+        $update = filter_var($latest_tag, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
-    $latest_version = filter_var($release_data->tag_name, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-    $download_url = $release_data->assets[0]->browser_download_url;
-
-    // Check if a newer version exists
-    if (version_compare($latest_version, $current_version, '>')) {
-        $data->response[$theme_slug] = [
-            'theme'       => $theme_slug,
-            'new_version' => $latest_version,
-            'url'         => "https://github.com/{$github_user}/{$github_repo}",
-            'package'     => $download_url,
-        ];
+        // Compare versions
+        if (version_compare($update, $current, '>')) {
+            $data->response[$theme] = array(
+                'theme'       => $theme,
+                'new_version' => $update,
+                'url'         => 'https://github.com/' . $user . '/' . $repo,
+                'package'     => 'https://codeload.github.com/' . $user . '/' . $repo . '/zip/refs/tags/' . $latest_tag,
+            );
+        }
     }
 
     return $data;
 }
+
 
 // Optional: Add information about the theme update in the "View Details" popup
 add_filter('themes_api', 'github_theme_update_details', 100, 3);
@@ -63,7 +58,6 @@ function github_theme_update_details($response, $action, $args) {
 
     return $response;
 }
-
 /**
  * Webdescode functions and definitions.
  *
