@@ -1,4 +1,69 @@
 <?php
+// Enable automatic theme updates from GitHub
+add_filter('pre_set_site_transient_update_themes', 'github_theme_updates', 100, 1);
+function github_theme_updates($data) {
+    // Theme information
+    $theme_slug = get_stylesheet(); // Folder name of the current theme
+    $current_version = wp_get_theme()->get('Version'); // Current version of the theme
+    
+    // GitHub repository details
+    $github_user = 'sobujmiah01'; // Your GitHub username
+    $github_repo = 'webdescode'; // Your repository name
+    
+    // Fetch the latest release information from GitHub API
+    $response = wp_remote_get("https://api.github.com/repos/{$github_user}/{$github_repo}/releases/latest", [
+        'headers' => ['User-Agent' => 'WordPress'],
+    ]);
+
+    // If the API call fails, return the current data
+    if (is_wp_error($response)) return $data;
+
+    $release_data = json_decode(wp_remote_retrieve_body($response));
+
+    // Verify release data structure
+    if (!isset($release_data->tag_name) || !isset($release_data->assets[0]->browser_download_url)) return $data;
+
+    $latest_version = filter_var($release_data->tag_name, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    $download_url = $release_data->assets[0]->browser_download_url;
+
+    // Check if a newer version exists
+    if (version_compare($latest_version, $current_version, '>')) {
+        $data->response[$theme_slug] = [
+            'theme'       => $theme_slug,
+            'new_version' => $latest_version,
+            'url'         => "https://github.com/{$github_user}/{$github_repo}",
+            'package'     => $download_url,
+        ];
+    }
+
+    return $data;
+}
+
+// Optional: Add information about the theme update in the "View Details" popup
+add_filter('themes_api', 'github_theme_update_details', 100, 3);
+function github_theme_update_details($response, $action, $args) {
+    // Ensure this is about your theme
+    if ($args->slug !== get_stylesheet()) return $response;
+
+    $github_user = 'sobujmiah01'; // Your GitHub username
+    $github_repo = 'webdescode'; // Your repository name
+
+    $response = (object) [
+        'name'        => wp_get_theme()->get('Name'),
+        'slug'        => $args->slug,
+        'version'     => wp_get_theme()->get('Version'),
+        'author'      => '<a href="https://github.com/'.$github_user.'">'.$github_user.'</a>',
+        'homepage'    => 'https://github.com/'.$github_user.'/'.$github_repo,
+        'download_link' => "https://github.com/{$github_user}/{$github_repo}/releases/latest/download/theme.zip",
+        'sections'    => [
+            'description' => 'This theme receives updates directly from its GitHub repository.',
+            'changelog'   => 'View the changelog on the <a href="https://github.com/'.$github_user.'/'.$github_repo.'/releases" target="_blank">GitHub releases page</a>.',
+        ],
+    ];
+
+    return $response;
+}
+
 /**
  * Webdescode functions and definitions.
  *
