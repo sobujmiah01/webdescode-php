@@ -1,6 +1,8 @@
 <?php
-add_filter('pre_set_site_transient_update_themes', 'automatic_GitHub_updates', 100, 1);
-function automatic_GitHub_updates($data) {
+
+// Advanced GitHub Theme Updates
+add_filter('pre_set_site_transient_update_themes', 'advanced_github_theme_updates', 100, 1);
+function advanced_github_theme_updates($data) {
     $theme   = get_stylesheet(); // Folder name of the current theme
     $current = wp_get_theme()->get('Version'); // Current theme version
     $user    = 'sobujmiah01'; // GitHub username
@@ -10,10 +12,17 @@ function automatic_GitHub_updates($data) {
     $tags_url = 'https://api.github.com/repos/' . $user . '/' . $repo . '/tags';
 
     // Fetch tags from the GitHub API
-    $response = @file_get_contents($tags_url, false,
-        stream_context_create(['http' => ['header' => "User-Agent: " . $user . "\r\n"]])
-    );
-    $tags = @json_decode($response);
+    $response = wp_remote_get($tags_url, array(
+        'headers' => array(
+            'User-Agent' => $user
+        )
+    ));
+
+    if (is_wp_error($response)) {
+        return $data;
+    }
+
+    $tags = json_decode(wp_remote_retrieve_body($response));
 
     if ($tags && is_array($tags) && !empty($tags[0]->name)) {
         $latest_tag = $tags[0]->name; // Get the latest tag (assuming it's ordered by release)
@@ -25,7 +34,7 @@ function automatic_GitHub_updates($data) {
                 'theme'       => $theme,
                 'new_version' => $update,
                 'url'         => 'https://github.com/' . $user . '/' . $repo,
-                'package'     => 'https://codeload.github.com/' . $user . '/' . $repo . '/zip/refs/tags/' . $latest_tag,
+                'package'     => 'https://github.com/' . $user . '/' . $repo . '/archive/' . $latest_tag . '.zip',
             );
         }
     }
@@ -33,10 +42,9 @@ function automatic_GitHub_updates($data) {
     return $data;
 }
 
-
 // Optional: Add information about the theme update in the "View Details" popup
-add_filter('themes_api', 'github_theme_update_details', 100, 3);
-function github_theme_update_details($response, $action, $args) {
+add_filter('themes_api', 'advanced_github_theme_update_details', 100, 3);
+function advanced_github_theme_update_details($response, $action, $args) {
     // Ensure this is about your theme
     if ($args->slug !== get_stylesheet()) return $response;
 
@@ -353,17 +361,6 @@ function custom_pagination($query = null) {
     }
 }
 
-// Remove block styles
-function custom_remove_block_styles() {
-    if (!is_admin()) {
-        wp_dequeue_style('wp-block-library');
-        wp_dequeue_style('wp-block-library-theme');
-        
-        wp_dequeue_style('global-styles');
-    }
-}
-add_action('wp_enqueue_scripts', 'custom_remove_block_styles', 100);
-
 /**
  * Register custom block pattern categories for WebDesCode theme.
  *
@@ -387,6 +384,7 @@ add_action( 'init', 'webdescode_register_block_pattern_categories' );
 
 // Include the file that registers block patterns.
 require get_template_directory() . '/patterns/two-column-layout.php';
+require get_template_directory() . '/patterns/about-layout.php';
 // Add support for custom background.
 if ( ! function_exists( 'webdescode_custom_background_setup' ) ) :
     /**
@@ -409,3 +407,13 @@ if ( ! function_exists( 'webdescode_custom_background_setup' ) ) :
     }
 endif;
 add_action( 'after_setup_theme', 'webdescode_custom_background_setup' );
+// Remove block styles
+function custom_remove_block_styles() {
+    if (!is_admin()) {
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('wp-block-library-theme');
+        
+        wp_dequeue_style('global-styles');
+    }
+}
+add_action('wp_enqueue_scripts', 'custom_remove_block_styles', 100);

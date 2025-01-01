@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+
 <div class="error-404">
     <div class="error-content">
         <h1><?php esc_html_e('Oops! Page not found.', 'webdescode'); ?></h1>
@@ -16,6 +17,14 @@
             </a> 
             <?php esc_html_e('or check out the following pages:', 'webdescode'); ?>
         </p>
+        
+        <!-- Suggested Pages -->
+        <ul class="suggested-pages">
+            <li><a href="<?php echo esc_url(home_url('/about')); ?>"><?php esc_html_e('About Us', 'webdescode'); ?></a></li>
+            <li><a href="<?php echo esc_url(home_url('/contact')); ?>"><?php esc_html_e('Contact Us', 'webdescode'); ?></a></li>
+            <li><a href="<?php echo esc_url(home_url('/blog')); ?>"><?php esc_html_e('Blog', 'webdescode'); ?></a></li>
+        </ul>
     </div>
 </div>
+
 <?php get_footer(); ?>

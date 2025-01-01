@@ -3,10 +3,8 @@
 <main class="main_article_post">
     <article class="web_post_wrapper">
         <div class="web_post_inner">
-            <?php
-                if (have_posts()) :
-                    while (have_posts()) : the_post();
-            ?>
+            <?php if (have_posts()): ?>
+                <?php while (have_posts()): the_post(); ?>
                     <div id="post-<?php the_ID(); ?>" <?php post_class('single_postWP'); ?>>
                         <h1><?php the_title(); ?></h1>
                         
@@ -23,10 +21,10 @@
 
                         <!-- Pagination for multi-page content -->
                         <?php
-                            wp_link_pages( array(
-                                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'webdescode' ),
+                            wp_link_pages(array(
+                                'before' => '<div class="page-links">' . esc_html__('Pages:', 'webdescode'),
                                 'after'  => '</div>',
-                            ) );
+                            ));
                         ?>
 
                         <!-- Related Posts Section -->
@@ -46,11 +44,10 @@
                             <?php comments_template(); ?>
                         </div>
                     </div>
-            <?php endwhile;
-                else :
-                    echo 'Nothing, Post here';
-                endif;
-            ?>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <p><?php esc_html_e('Nothing, Post here', 'webdescode'); ?></p>
+            <?php endif; ?>
         </div>
     </article>
 

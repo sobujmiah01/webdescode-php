@@ -1,5 +1,4 @@
-<?php
-if (have_comments()) : ?>
+<?php if (have_comments()): ?>
     <h2 class="comments-title">
         <?php
         printf(
@@ -20,16 +19,13 @@ if (have_comments()) : ?>
     </ul>
 
     <?php the_comments_navigation(); ?>
+<?php endif; ?>
 
-<?php
-endif;
-
-// If comments are closed and there are comments, leave a note
-if (!comments_open() && get_comments_number()) : ?>
+<?php if (!comments_open() && get_comments_number()): ?>
     <p class="no-comments"><?php esc_html_e('Comments are closed.', 'webdescode'); ?></p>
-<?php
-endif;
+<?php endif; ?>
 
+<?php
 // Comment form
 $commenter = wp_get_current_commenter(); // Get current commenter information
 $req = get_option('require_name_email'); // Check if name and email are required

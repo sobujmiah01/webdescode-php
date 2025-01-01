@@ -238,8 +238,8 @@ header.web_header .header_wrapper .Header_main_menu .menu_wrapper .search_and_rs
 }
 .main_article_post {
   box-sizing: border-box;
-  max-width: 1281px;
-  width: 100%;
+  /* max-width: 1281px; */
+  width: 100vw;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 300px;
