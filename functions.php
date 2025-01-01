@@ -408,7 +408,7 @@ if ( ! function_exists( 'webdescode_custom_background_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'webdescode_custom_background_setup' );
 // Remove block styles
-function custom_remove_block_styles() {
+/* function custom_remove_block_styles() {
     if (!is_admin()) {
         wp_dequeue_style('wp-block-library');
         wp_dequeue_style('wp-block-library-theme');
@@ -416,4 +416,4 @@ function custom_remove_block_styles() {
         wp_dequeue_style('global-styles');
     }
 }
-add_action('wp_enqueue_scripts', 'custom_remove_block_styles', 100);
+add_action('wp_enqueue_scripts', 'custom_remove_block_styles', 100); */

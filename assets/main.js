@@ -31,26 +31,28 @@ jQuery(document).ready(function($) {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    var preformattedTextList = document.querySelectorAll('.preformatted-text');
+document.addEventListener('DOMContentLoaded', () => {
+    const codeBlocks = document.querySelectorAll('.preformatted-text.line-numbers');
 
-    preformattedTextList.forEach(function (preformattedText) {
-        var copyButton = document.createElement('button');
-        copyButton.textContent = 'Copy Code';
-        copyButton.className = 'copy-button';
-        copyButton.addEventListener('click', function () {
-            var textArea = document.createElement("textarea");
-            textArea.value = preformattedText.textContent;
+    codeBlocks.forEach(codeBlock => {
+        // Add event listener to the pseudo-element
+        codeBlock.addEventListener('click', () => {
+            const textArea = document.createElement("textarea");
+            textArea.value = codeBlock.innerText.trim(); // Use innerText for formatted content
             document.body.appendChild(textArea);
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            alert('Code copied to clipboard!');
-        });
 
-        preformattedText.insertAdjacentElement('beforebegin', copyButton);
+            // Visual feedback for copy action
+            codeBlock.classList.add('copied');
+            setTimeout(() => {
+                codeBlock.classList.remove('copied');
+            }, 4000);
+        });
     });
 });
+
 jQuery(document).ready(function($) {
     $(".fas.fa-search").hide();
     function searchRes() {

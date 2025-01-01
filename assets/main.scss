@@ -7,11 +7,11 @@
 img {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: auto;
 }
 a {
 display: inline-block; /* Ensures link behaves like a block element */
-margin: 0;
-padding: 0;
 text-decoration: none;
 }
 p{
@@ -35,6 +35,11 @@ li{
 }
 iframe {
     margin: 8px 0px;
+}
+body{
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 $a_color:#000;
 $ah_color:#080808;
@@ -246,7 +251,7 @@ header.web_header{
 }
 .main_article_post{
     box-sizing: border-box;
-    /* max-width: 1281px; */
+    max-width: 1281px;
     width: 100vw;
     margin: 0 auto;
     display: grid;
@@ -1330,4 +1335,70 @@ Contact Page
 }
 .wp-block-button {
     margin-bottom: 0.8em;
+}
+/* Make sure the video background covers the entire block */
+.wp-block-cover__video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the area */
+    object-position: center center; /* Centers the video */
+    z-index: -1; /* Make sure the video stays behind the content */
+}
+
+/* Make the block container position relative */
+.wp-block-cover {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center; /* Centers the content vertically */
+    justify-content: center; /* Centers the content horizontally */
+}
+
+/* Ensure the content is properly visible over the video */
+.wp-block-cover .wp-block-cover__inner-container {
+    position: relative;
+    z-index: 1; /* Content stays above the video */
+    padding: 20px; /* Add some padding for spacing */
+}
+
+/* Responsive design for different screen sizes */
+@media (max-width: 768px) {
+    .wp-block-cover__video-background {
+        /* Adjust video for smaller screens */
+        object-position: top center;
+    }
+}
+.preformatted-text {
+    font-family: monospace;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+.preformatted-text.line-numbers {
+    position: relative;
+    padding-right: 40px;
+}
+
+.preformatted-text.line-numbers::after {
+    content: 'Copy';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #0073aa;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.preformatted-text.line-numbers.copied::after {
+    content: 'Copied!';
+    background-color: #46b450;
 }
