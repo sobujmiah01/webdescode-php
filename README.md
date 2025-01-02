@@ -1,8 +1,8 @@
-# WebDesCode WordPress Theme
+# webdescode WordPress Theme
 
 ## Description
 
-The **WebDesCode** theme is a versatile and customizable WordPress theme designed to provide a seamless and engaging experience for websites. With a focus on flexibility and user-friendly customization, this theme offers various features and options to tailor your website according to your needs.
+The **webdescode** theme is a versatile and customizable WordPress theme designed to provide a seamless and engaging experience for websites. With a focus on flexibility and user-friendly customization, this theme offers various features and options to tailor your website according to your needs.
 
 ## Key Features
 
@@ -26,7 +26,7 @@ To use this theme:
 
 1. **Download:** Clone or download the repository.
 2. **Installation:** Upload the theme folder to your WordPress installation's `wp-content/themes/` directory.
-3. **Activation:** Log in to your WordPress dashboard, navigate to Appearance > Themes, and activate the **WebDesCode** theme.
+3. **Activation:** Log in to your WordPress dashboard, navigate to Appearance > Themes, and activate the **webdescode** theme.
 
 ## Customization
 
@@ -86,7 +86,7 @@ Contributions, bug reports, and feature requests are welcome! Feel free to submi
 
 ## License
 
-This project is licensed under the [GNU General Public License v3.0](https://github.com/sobujmiah01/webdescode-php/blob/master/LICENSE.txt).
+This project is licensed under the [GNU General Public License v3.0](https://github.com/sobujmiah01/webdescode/blob/master/LICENSE.txt).
 
 ## Contact and Social Media
 

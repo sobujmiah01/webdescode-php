@@ -1,4 +1,4 @@
-=== WebDesCode ===
+=== webdescode ===
 Contributors: sobujmiah01
 Tags: Custom Colors, Custom Menu, Custom Logo, Responsive Layout, Editor Style, Featured Images, SEO Ready, Widgets, Threaded Comments, Translation Ready, Clean Design, Minimalist, Blog, Developer-Friendly, Portfolio, Tutorials, Accessibility Ready, Highlight Code, Copy Clipboard, Pagination
 Requires at least: 5.0
@@ -8,10 +8,10 @@ Tested with PHP: 8.3.14
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-WebDesCode is a modern and clean WordPress theme designed for bloggers, developers, and tutorial creators. This theme is optimized for speed, accessibility, and SEO.
+webdescode is a modern and clean WordPress theme designed for bloggers, developers, and tutorial creators. This theme is optimized for speed, accessibility, and SEO.
 
 == Description ==
-WebDesCode is a fully responsive, customizable WordPress theme ideal for sharing coding tutorials, development tips, and other technical content. The theme includes support for custom menus, custom colors, featured images, and a variety of other features to help you create a stunning and functional website.
+webdescode is a fully responsive, customizable WordPress theme ideal for sharing coding tutorials, development tips, and other technical content. The theme includes support for custom menus, custom colors, featured images, and a variety of other features to help you create a stunning and functional website.
 
 **Features:**
 - Mobile-friendly and fully responsive.
@@ -39,7 +39,7 @@ WebDesCode is a fully responsive, customizable WordPress theme ideal for sharing
 Use the WordPress Customizer to change colors, upload your logo, and tweak other visual settings.
 
 = Is this theme translation-ready? =
-Yes, WebDesCode is fully translation-ready.
+Yes, webdescode is fully translation-ready.
 
 = Does this theme support Gutenberg? =
 Yes, the theme is fully compatible with the Gutenberg block editor.

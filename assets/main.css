@@ -222,6 +222,9 @@ header.web_header .header_wrapper .Header_main_menu .menu_wrapper .search_and_rs
 
 /* Search responsive & Header responsive */
 @media screen and (max-width: 580px) {
+  header.web_header .header_wrapper .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation {
+    top: 38px !important;
+  }
   header.web_header .header_wrapper .Header_main_menu .menu_wrapper .logo_menu_wrapper a.web_logoL {
     width: 160px;
   }
@@ -905,7 +908,7 @@ button.copy-button:hover {
   }
   header.web_header .header_wrapper .Header_main_menu .menu_wrapper .logo_menu_wrapper nav.main_navigation {
     position: absolute;
-    background-color: #fff;
+    background-color: #ddd;
     top: 54px;
     padding: 8px 0px;
     left: 0;

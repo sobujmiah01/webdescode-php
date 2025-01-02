@@ -1,71 +1,4 @@
 <?php
-
-// Advanced GitHub Theme Updates
-add_filter('pre_set_site_transient_update_themes', 'advanced_github_theme_updates', 100, 1);
-function advanced_github_theme_updates($data) {
-    $theme   = get_stylesheet(); // Folder name of the current theme
-    $current = wp_get_theme()->get('Version'); // Current theme version
-    $user    = 'sobujmiah01'; // GitHub username
-    $repo    = 'webdescode'; // Repository name
-
-    // Construct the GitHub API URL for tags
-    $tags_url = 'https://api.github.com/repos/' . $user . '/' . $repo . '/tags';
-
-    // Fetch tags from the GitHub API
-    $response = wp_remote_get($tags_url, array(
-        'headers' => array(
-            'User-Agent' => $user
-        )
-    ));
-
-    if (is_wp_error($response)) {
-        return $data;
-    }
-
-    $tags = json_decode(wp_remote_retrieve_body($response));
-
-    if ($tags && is_array($tags) && !empty($tags[0]->name)) {
-        $latest_tag = $tags[0]->name; // Get the latest tag (assuming it's ordered by release)
-        $update = filter_var($latest_tag, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-
-        // Compare versions
-        if (version_compare($update, $current, '>')) {
-            $data->response[$theme] = array(
-                'theme'       => $theme,
-                'new_version' => $update,
-                'url'         => 'https://github.com/' . $user . '/' . $repo,
-                'package'     => 'https://github.com/' . $user . '/' . $repo . '/archive/' . $latest_tag . '.zip',
-            );
-        }
-    }
-
-    return $data;
-}
-
-// Optional: Add information about the theme update in the "View Details" popup
-add_filter('themes_api', 'advanced_github_theme_update_details', 100, 3);
-function advanced_github_theme_update_details($response, $action, $args) {
-    // Ensure this is about your theme
-    if ($args->slug !== get_stylesheet()) return $response;
-
-    $github_user = 'sobujmiah01'; // Your GitHub username
-    $github_repo = 'webdescode'; // Your repository name
-
-    $response = (object) [
-        'name'        => wp_get_theme()->get('Name'),
-        'slug'        => $args->slug,
-        'version'     => wp_get_theme()->get('Version'),
-        'author'      => '<a href="https://github.com/'.$github_user.'">'.$github_user.'</a>',
-        'homepage'    => 'https://github.com/'.$github_user.'/'.$github_repo,
-        'download_link' => "https://github.com/{$github_user}/{$github_repo}/releases/latest/download/theme.zip",
-        'sections'    => [
-            'description' => 'This theme receives updates directly from its GitHub repository.',
-            'changelog'   => 'View the changelog on the <a href="https://github.com/'.$github_user.'/'.$github_repo.'/releases" target="_blank">GitHub releases page</a>.',
-        ],
-    ];
-
-    return $response;
-}
 /**
  * Webdescode functions and definitions.
  *
@@ -73,59 +6,33 @@ function advanced_github_theme_update_details($response, $action, $args) {
  *
  * @package WordPress
  * @subpackage Webdescode
- * @since Webdescode 1.8
+ * @since Webdescode 2.0
  */
-// Enqueue Prism styles and scripts
-function enqueue_prism() {
-    wp_enqueue_style('prism', get_template_directory_uri() . '/prism/prism.css', array(), '1.1', 'all');
-    wp_enqueue_script('prism', get_template_directory_uri() . '/prism/prism.js', array('jquery'), '1.1', true);
+
+// Enqueue styles
+function enqueue_theme_styles() {
+    wp_enqueue_style('prism', get_template_directory_uri() . '/prism/prism.css', array(), '2.0', 'all');
+    wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/main.css', array(), '2.0', 'all');
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap', array(), null);
+    wp_enqueue_style('fontawesome', get_template_directory_uri() . '/fontawesome/all.min.css', array(), '2.0', 'all');
+    wp_enqueue_style('webdescode-style', get_stylesheet_uri());
+    wp_enqueue_style('webdescode-block-styles', get_template_directory_uri() . '/assets/css/block-styles.css', array(), '2.0');
 }
-add_action('wp_enqueue_scripts', 'enqueue_prism');
+add_action('wp_enqueue_scripts', 'enqueue_theme_styles');
 
-// Enqueue theme styles, scripts, and Google Fonts
-function enqueue_theme_assets() {
-    // Enqueue main stylesheet
-    wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/main.css', array(), '1.1', 'all');
-    
-    // Enqueue custom script
-    wp_enqueue_script('app-script', get_template_directory_uri() . '/assets/main.js', array('jquery'), '1.1', true);
-    
-    // Enqueue Google Fonts
-    wp_enqueue_style(
-        'google-fonts',
-        'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap',
-        array(),
-        null
-    );
-    
-    // Enqueue Font Awesome
-    wp_enqueue_style('fontawesome', get_template_directory_uri() . '/fontawesome/all.min.css', array(), '1.1', 'all');
-    wp_enqueue_script('fontawesome-js', get_template_directory_uri() . '/fontawesome/all.min.js', array(), '1.1', true);
-    wp_enqueue_script('theme-customizer', get_template_directory_uri() . '/assets/js/theme-customizer.js', array('jquery', 'customize-preview'), '1.0', true);
+// Enqueue scripts
+function enqueue_theme_scripts() {
+    wp_enqueue_script('prism', get_template_directory_uri() . '/prism/prism.js', array('jquery'), '2.0', true);
+    wp_enqueue_script('app-script', get_template_directory_uri() . '/assets/main.js', array('jquery'), '2.0', true);
+    wp_enqueue_script('fontawesome-js', get_template_directory_uri() . '/fontawesome/all.min.js', array(), '2.0', true);
+    wp_enqueue_script('theme-customizer', get_template_directory_uri() . '/assets/js/theme-customizer.js', array('jquery', 'customize-preview'), '2.0', true);
 }
-add_action('wp_enqueue_scripts', 'enqueue_theme_assets');
+add_action('wp_enqueue_scripts', 'enqueue_theme_scripts');
 
-/**
- * Enqueue theme styles
- */
-function webdescode_enqueue_styles() {
-    wp_enqueue_style( 'webdescode-style', get_stylesheet_uri() );
-
-    // Enqueue block styles CSS file
-    wp_enqueue_style( 'webdescode-block-styles', get_template_directory_uri() . '/assets/css/block-styles.css', array(), '1.0' );
-}
-add_action( 'wp_enqueue_scripts', 'webdescode_enqueue_styles' );
-
-// Include block style registration
-require get_template_directory() . '/inc/register_block_style.php';
-
-// Theme setup for various features
+// Theme setup
 function webdescode_theme_setup() {
-    // Load the theme's text domain for translation
-    load_theme_textdomain( 'webdescode', get_template_directory() . '/languages' );
-    // Add support for accessibility features
-    add_theme_support( 'accessibility-ready' );
-    // Add theme support for various features
+    load_theme_textdomain('webdescode', get_template_directory() . '/languages');
+    add_theme_support('accessibility-ready');
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_theme_support('automatic-feed-links');
@@ -135,7 +42,6 @@ function webdescode_theme_setup() {
     add_editor_style('style-editor.css');
     add_theme_support('wp-block-styles');
     
-    // Add support for custom logo
     $logo_defaults = array(
         'height'               => 100,
         'width'                => 200,
@@ -146,9 +52,8 @@ function webdescode_theme_setup() {
     );
     add_theme_support('custom-logo', $logo_defaults);
 
-    // Add support for custom header
     add_theme_support('custom-header', array(
-        'default-color'          => "#ffffff",  // Corrected to include #
+        'default-color'          => "#ffffff",
         'width'                  => 1200,
         'height'                 => 600,
         'flex-height'            => true,
@@ -158,7 +63,6 @@ function webdescode_theme_setup() {
         'uploads'                => false,
     ));
 
-    // Add HTML5 support
     add_theme_support('html5', array(
         'search-form',
         'comment-form',
@@ -169,7 +73,6 @@ function webdescode_theme_setup() {
         'script'
     ));
 
-    // Register navigation menus
     if (function_exists('register_nav_menus')) {
         register_nav_menus(array(
             'header_menu' => __('Header Menu', 'webdescode'),
@@ -179,6 +82,20 @@ function webdescode_theme_setup() {
     }
 }
 add_action('after_setup_theme', 'webdescode_theme_setup');
+
+// Custom background support
+function webdescode_custom_background_setup() {
+    $args = array(
+        'default-color'          => 'ffffff',
+        'default-image'          => '',
+        'wp-head-callback'       => '_custom_background_cb',
+        'admin-head-callback'    => '',
+        'admin-preview-callback' => '',
+    );
+
+    add_theme_support('custom-background', $args);
+}
+add_action('after_setup_theme', 'webdescode_custom_background_setup');
 
 // Register widget areas
 function webdescode_register_widget_areas() {
@@ -209,16 +126,13 @@ function webdescode_register_widget_areas() {
 }
 add_action('widgets_init', 'webdescode_register_widget_areas');
 
-// Function to register customizer settings for social media and website slogan
-function webdescode_customize_register( $wp_customize ) {
-
-    // Add Social Media Section
+// Customizer settings
+function webdescode_customize_register($wp_customize) {
     $wp_customize->add_section('webdescode_social_section', array(
         'title'    => __('Social Media', 'webdescode'),
         'priority' => 30,
     ));
 
-    // Add Social Media Fields
     $social_icons = array(
         'facebook'  => 'Facebook',
         'twitter'   => 'Twitter',
@@ -229,13 +143,11 @@ function webdescode_customize_register( $wp_customize ) {
     );
 
     foreach ($social_icons as $network => $label) {
-        // Add the setting for each social network
         $wp_customize->add_setting('social_' . $network, array(
             'default'           => '',
             'sanitize_callback' => 'esc_url_raw',
         ));
 
-        // Add the control to allow the user to input the social media URL
         $wp_customize->add_control('social_' . $network, array(
             'label'    => $label . ' URL',
             'section'  => 'webdescode_social_section',
@@ -244,8 +156,9 @@ function webdescode_customize_register( $wp_customize ) {
         ));
     }
 }
-add_action( 'customize_register', 'webdescode_customize_register' );
-// Related posts function based on categories
+add_action('customize_register', 'webdescode_customize_register');
+
+// Related posts function
 function example_cats_related_post($heading = 'Related Posts') {
     $post_id = get_the_ID();
     $cat_ids = array();
@@ -288,7 +201,7 @@ function example_cats_related_post($heading = 'Related Posts') {
     endif;
 }
 
-// Comment reply script enqueued
+// Comment reply script
 function webdescode_enqueue_comment_reply_script() {
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
@@ -303,14 +216,13 @@ function custom_pagination($query = null) {
         $query = $wp_query;
     }
 
-    $big = 999999999; // A large number for pagination base
+    $big = 999999999;
     $paged = max(1, get_query_var('paged'));
     $pages = $query->max_num_pages;
 
     if ($pages > 1) {
         echo '<div class="pagination"><ul class="pagination-list">';
 
-        // Generate pagination links using paginate_links()
         $pagination_links = paginate_links(array(
             'base'      => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
             'format'    => '?paged=%#%',
@@ -318,33 +230,28 @@ function custom_pagination($query = null) {
             'total'     => $pages,
             'prev_text' => '&lsaquo; Previous',
             'next_text' => 'Next &rsaquo;',
-            'type'      => 'array', // Returns an array of links for custom styling
+            'type'      => 'array',
         ));
 
-        // Filter the pagination links to show only 3 page numbers
         $filtered_links = array();
         foreach ($pagination_links as $link) {
-            // Get the page number from the link
             if (preg_match('/href=["\'].*?paged=(\d+)/', $link, $matches)) {
                 $page_number = (int) $matches[1];
             } elseif (strpos($link, 'current') !== false) {
-                $page_number = $paged; // For the current page
+                $page_number = $paged;
             } else {
                 continue;
             }
 
-            // Include only the range of 3 pages
             if ($page_number >= $paged - 1 && $page_number <= $paged + 1) {
                 $filtered_links[] = $link;
             }
         }
 
-        // Add navigation arrows (if necessary)
         if ($paged > 1) {
             echo '<li class="pagination-item"><a href="' . esc_url(get_pagenum_link($paged - 1)) . '">&lsaquo; Previous</a></li>';
         }
 
-        // Display the filtered pagination links
         foreach ($filtered_links as $link) {
             if (strpos($link, 'current') !== false) {
                 echo '<li class="pagination-item active">' . $link . '</li>';
@@ -361,58 +268,28 @@ function custom_pagination($query = null) {
     }
 }
 
-/**
- * Register custom block pattern categories for WebDesCode theme.
- *
- * @since WebDesCode 1.8
- */
+// Register block pattern categories
+function webdescode_register_block_pattern_categories() {
+    register_block_pattern_category(
+        'webdescode-layouts',
+        array(
+            'label'       => __('Layouts', 'webdescode'),
+            'description' => __('A collection of layout patterns.', 'webdescode'),
+        )
+    );
+}
+add_action('init', 'webdescode_register_block_pattern_categories');
 
-// Register block pattern categories.
-if ( ! function_exists( 'webdescode_register_block_pattern_categories' ) ) :
-    function webdescode_register_block_pattern_categories() {
-        // Registering the "Layouts" category.
-        register_block_pattern_category(
-            'webdescode-layouts',
-            array(
-                'label'       => __( 'Layouts', 'webdescode' ),
-                'description' => __( 'A collection of layout patterns.', 'webdescode' ),
-            )
-        );
-    }
-endif;
-add_action( 'init', 'webdescode_register_block_pattern_categories' );
-
-// Include the file that registers block patterns.
+// Include block patterns
 require get_template_directory() . '/patterns/two-column-layout.php';
 require get_template_directory() . '/patterns/about-layout.php';
-// Add support for custom background.
-if ( ! function_exists( 'webdescode_custom_background_setup' ) ) :
-    /**
-     * Set up the WordPress core custom background feature.
-     *
-     * @since Webdescode 1.8
-     *
-     * @return void
-     */
-    function webdescode_custom_background_setup() {
-        $args = array(
-            'default-color'          => 'ffffff', // Default background color.
-            'default-image'          => '',      // Default background image.
-            'wp-head-callback'       => '_custom_background_cb',
-            'admin-head-callback'    => '',
-            'admin-preview-callback' => '',
-        );
 
-        add_theme_support( 'custom-background', $args );
-    }
-endif;
-add_action( 'after_setup_theme', 'webdescode_custom_background_setup' );
-// Remove block styles
+
+// Remove block styles (commented out)
 /* function custom_remove_block_styles() {
     if (!is_admin()) {
         wp_dequeue_style('wp-block-library');
         wp_dequeue_style('wp-block-library-theme');
-        
         wp_dequeue_style('global-styles');
     }
 }
